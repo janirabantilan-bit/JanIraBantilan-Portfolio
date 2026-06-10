@@ -664,29 +664,29 @@
             .xp-header h2 {
                 font-size: 1.5rem;
             }
-        } /* --- Floating Experience Badge Styling --- */
+        }/* --- Floating Experience Badge Styling (Upper Right & Larger) --- */
         .floating-experience-badge {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 100px; /* Places it near the top, just below your header navbar */
+            right: 30px; /* Anchors it to the right side */
             z-index: 9999;
-            width: 100px;
+            width: 140px; /* Made it significantly larger so the text is highly readable */
             height: auto;
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
-            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.2));
+            filter: drop-shadow(0 10px 25px rgba(56, 189, 248, 0.25));
         }
 
         .floating-experience-badge:hover {
-            transform: translateY(-5px) scale(1.05);
-            filter: drop-shadow(0 15px 25px rgba(56, 189, 248, 0.45));
+            transform: scale(1.08); /* Gently pops out when hovered */
+            filter: drop-shadow(0 15px 30px rgba(56, 189, 248, 0.5));
         }
 
         @media (max-width: 768px) {
             .floating-experience-badge {
-                bottom: 20px;
-                right: 20px;
-                width: 75px;
+                top: 90px;
+                right: 15px;
+                width: 95px; /* Slightly smaller on mobile so it doesn't crowd your text */
             }
         }
     </style>
