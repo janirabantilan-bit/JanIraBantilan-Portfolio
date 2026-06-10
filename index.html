@@ -1081,29 +1081,83 @@ I am a highly proactive and organized Professional with <strong>over 15+ years o
 </div>
 </section>
 
-<!-- SKILLS AND TRAITS GRID -->
-<section id="skills">
-<div class="container">
-<h2 class="section-title">Skills, Strengths & Traits</h2>
-<p class="section-subtitle">Core execution parameters cultivated through 15+ years of high-level administrative and sales experience.</p>
+/* --- Interactive Skills & Traits Cards --- */
 
-<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Core Expertise & Strengths</h3>
-<div class="grid" style="margin-bottom: 48px;">
-<div class="card"><span class="card-icon">📈</span><h3>Sales & Execution</h3><p>Driving inbound and outbound conversion pathways, overcoming structural friction, and closing business framework agreements.</p></div>
-<div class="card"><span class="card-icon">⚡</span><h3>Customer Service</h3><p>Delivering high-tier omni-channel platform support while defending consumer retention benchmarks.</p></div>
-<div class="card"><span class="card-icon">🎯</span><h3>Lead Generation</h3><p>Prospecting targets, mining accurate data pools, and populating pipelines with verified consumer opportunities.</p></div>
-<div class="card"><span class="card-icon">🗓️</span><h3>Appointment Setting</h3><p>Managing high-precision booking logs and calendar allocations to smoothly connect warm prospects with closer agents.</p></div>
-<div class="card"><span class="card-icon">📞</span><h3>Inside Sales Rep</h3><p>Handling discovery tracks, executing outbound calling loops, and presenting tailored corporate value metrics confidently.</p></div>
-</div>
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
 
-<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Professional Behavioral Traits</h3>
-<div class="grid">
-<div class="card"><span class="card-icon">🛡️</span><h3>Proactive & Responsible</h3><p>Self-driven project management with an unyielding sense of accountability and attention to organizational detail.</p></div>
-<div class="card"><span class="card-icon">🧠</span><h3>Collaborative & Swift Decision Maker</h3><p>Thriving inside matrixed team spaces while applying crisp, logical resolution steps to active procedural blockers.</p></div>
-<div class="card"><span class="card-icon">🌋</span><h3>High-Pressure Management</h3><p>Maintaining clear composure and rapid throughput when balancing concurrent workflows under strict turn-around mandates.</p></div>
-</div>
-</div>
-</section>
+    overflow: visible;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+
+    position: relative;
+    z-index: 1;
+
+    transition:
+        transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease,
+        background 0.45s ease;
+}
+
+.card:hover {
+    transform: scale(1.25) translateY(-12px);
+
+    z-index: 9999;
+
+    border-color: var(--accent-glow);
+
+    background: rgba(17, 24, 39, 0.96);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.45),
+        0 0 40px rgba(56,189,248,0.25);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    display: inline-block;
+
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.25);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: var(--accent-glow);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    transition: all 0.3s ease;
+}
+
+.card:hover p {
+    color: #d1d5db;
+    font-size: 1rem;
+}
 
 <!-- Tools Section -->
 <section id="tools">
