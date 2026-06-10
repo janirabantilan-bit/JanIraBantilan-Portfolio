@@ -451,35 +451,52 @@ font-weight: 700;
 .grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 24px;
+gap: 24px;  overflow: visible;
 }
 .card {
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-padding: 32px;
-border-radius: 16px;
-backdrop-filter: blur(16px);
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+
+    position: relative;
+    z-index: 1;
+
+    transition:
+        transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+
+    transform-origin: center center;
 }
 .card:hover {
-transform: translateY(-6px);
-border-color: var(--accent-glow);
-box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+    transform: scale(1.15);
+    z-index: 999;
+
+    border-color: var(--accent-glow);
+
+    background: rgba(17, 24, 39, 0.95);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.55),
+        0 0 35px rgba(56,189,248,0.25);
 }
 .card-icon {
-font-size: 1.8rem;
-margin-bottom: 16px;
-display: inline-block;
+  display: inline-block;
+    transition: transform 0.35s ease;
+}
+
+    .card:hover .card-icon {
+    transform: scale(1.15);
 }
 .card h3 {
-font-size: 1.25rem;
-font-weight: 600;
-margin-bottom: 12px;
+    transition: color 0.3s ease;
 }
-.card p {
-color: var(--text-muted);
-font-size: 0.95rem;
-line-height: 1.6;
+
+.card:hover h3 {
+    color: var(--accent-glow);
 }
 
 /* --- Moving Logos Marquee Row for Tools --- */
