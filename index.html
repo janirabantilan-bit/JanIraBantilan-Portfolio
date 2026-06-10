@@ -664,6 +664,30 @@
             .xp-header h2 {
                 font-size: 1.5rem;
             }
+        } /* --- Floating Experience Badge Styling --- */
+        .floating-experience-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
+            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.2));
+        }
+
+        .floating-experience-badge:hover {
+            transform: translateY(-5px) scale(1.05);
+            filter: drop-shadow(0 15px 25px rgba(56, 189, 248, 0.45));
+        }
+
+        @media (max-width: 768px) {
+            .floating-experience-badge {
+                bottom: 20px;
+                right: 20px;
+                width: 75px;
+            }
         }
     </style>
 </head>
@@ -1085,6 +1109,8 @@
             closeEmailModal();
         }
     </script>
-
+<a href="#experience">
+        <img src="image_efdf1f.png" alt="Over 15 Years Experience" class="floating-experience-badge">
+    </a>
 </body>
 </html>
