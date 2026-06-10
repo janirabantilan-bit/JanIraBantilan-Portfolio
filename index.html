@@ -247,22 +247,23 @@ animation: float-effect 6s ease-in-out infinite;
 }
 
 .floating-experience-badge {
-    position: fixed;
+position: fixed;
 
-    top: 90px;
-    left: 5px;
+    top: 5px;
+    top: 10px;
+left: 5px;
 
-    width: 300px;
-    height: auto;
+width: 300px;
+height: auto;
 
-    z-index: 9999;
+z-index: 9999;
 
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+transition: transform 0.3s ease;
+filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
 }
 
 .floating-experience-badge:hover {
-    transform: scale(1.08);
+transform: scale(1.08);
 }
 
 
@@ -446,6 +447,40 @@ left: 0;
 font-weight: 700;
 }
 
+/* --- Grid Systems for Skills & Traits --- */
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 24px;
+}
+.card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+padding: 32px;
+border-radius: 16px;
+backdrop-filter: blur(16px);
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover {
+transform: translateY(-6px);
+border-color: var(--accent-glow);
+box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+}
+.card-icon {
+font-size: 1.8rem;
+margin-bottom: 16px;
+display: inline-block;
+}
+.card h3 {
+font-size: 1.25rem;
+font-weight: 600;
+margin-bottom: 12px;
+}
+.card p {
+color: var(--text-muted);
+font-size: 0.95rem;
+line-height: 1.6;
+}
 
 /* --- Moving Logos Marquee Row for Tools --- */
 .marquee-wrapper {
@@ -459,63 +494,63 @@ border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .marquee-inner {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scrollTools 40s linear infinite;
+display: flex;
+gap: 20px;
+width: max-content;
+animation: scrollTools 40s linear infinite;
 }
 
 .marquee-wrapper:hover .marquee-inner {
-    animation-play-state: paused;
+animation-play-state: paused;
 }
 
 .tool-square-card {
-    min-width: 130px;
-    height: 130px;
+min-width: 130px;
+height: 130px;
 
-    background: rgba(10, 25, 47, 0.85);
-    border: 1px solid rgba(0, 153, 255, 0.25);
-    border-radius: 14px;
+background: rgba(10, 25, 47, 0.85);
+border: 1px solid rgba(0, 153, 255, 0.25);
+border-radius: 14px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 
-    gap: 10px;
-    padding: 15px;
+gap: 10px;
+padding: 15px;
 
-    transition: all 0.3s ease;
+transition: all 0.3s ease;
 }
 
 .tool-square-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    transition: all 0.3s ease;
+width: 80px;
+height: 80px;
+object-fit: contain;
+transition: all 0.3s ease;
 }
 
 .tool-square-card span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.2;
+font-size: 0.9rem;
+font-weight: 600;
+text-align: center;
+line-height: 1.2;
 }
 
 .tool-square-card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
-    z-index: 10;
+transform: scale(1.08);
+box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
+z-index: 10;
 }
 
 @keyframes scrollTools {
-    from {
-        transform: translateX(0);
-    }
+from {
+transform: translateX(0);
+}
 
-    to {
-        transform: translateX(-50%);
-    }
+to {
+transform: translateX(-50%);
+}
 }
 
 /* --- 8-Photo Overlapping Stack --- */
@@ -1047,137 +1082,94 @@ I am a highly proactive and organized Professional with <strong>over 15+ years o
 </div>
 </section>
 
-/* --- Interactive Skills & Traits Cards --- */
+<!-- SKILLS AND TRAITS GRID -->
+<section id="skills">
+<div class="container">
+<h2 class="section-title">Skills, Strengths & Traits</h2>
+<p class="section-subtitle">Core execution parameters cultivated through 15+ years of high-level administrative and sales experience.</p>
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    overflow: visible;
-}
+<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Core Expertise & Strengths</h3>
+<div class="grid" style="margin-bottom: 48px;">
+<div class="card"><span class="card-icon">📈</span><h3>Sales & Execution</h3><p>Driving inbound and outbound conversion pathways, overcoming structural friction, and closing business framework agreements.</p></div>
+<div class="card"><span class="card-icon">⚡</span><h3>Customer Service</h3><p>Delivering high-tier omni-channel platform support while defending consumer retention benchmarks.</p></div>
+<div class="card"><span class="card-icon">🎯</span><h3>Lead Generation</h3><p>Prospecting targets, mining accurate data pools, and populating pipelines with verified consumer opportunities.</p></div>
+<div class="card"><span class="card-icon">🗓️</span><h3>Appointment Setting</h3><p>Managing high-precision booking logs and calendar allocations to smoothly connect warm prospects with closer agents.</p></div>
+<div class="card"><span class="card-icon">📞</span><h3>Inside Sales Rep</h3><p>Handling discovery tracks, executing outbound calling loops, and presenting tailored corporate value metrics confidently.</p></div>
+</div>
 
-.card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 32px;
-    border-radius: 16px;
-    backdrop-filter: blur(16px);
-    position: relative;
-    z-index: 1;
-    transition:
-        transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-        box-shadow 0.45s ease,
-        border-color 0.45s ease,
-        background 0.45s ease;
-}
+<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Professional Behavioral Traits</h3>
+<div class="grid">
+<div class="card"><span class="card-icon">🛡️</span><h3>Proactive & Responsible</h3><p>Self-driven project management with an unyielding sense of accountability and attention to organizational detail.</p></div>
+<div class="card"><span class="card-icon">🧠</span><h3>Collaborative & Swift Decision Maker</h3><p>Thriving inside matrixed team spaces while applying crisp, logical resolution steps to active procedural blockers.</p></div>
+<div class="card"><span class="card-icon">🌋</span><h3>High-Pressure Management</h3><p>Maintaining clear composure and rapid throughput when balancing concurrent workflows under strict turn-around mandates.</p></div>
+</div>
+</div>
+</section>
 
-.card:hover {
-    transform: scale(1.25) translateY(-12px);
-    z-index: 9999;
-    border-color: var(--accent-glow);
-    background: rgba(17, 24, 39, 0.96);
-    box-shadow:
-        0 30px 60px rgba(0,0,0,0.45),
-        0 0 40px rgba(56,189,248,0.25);
-}
-
-.card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 16px;
-    display: inline-block;
-    transition: transform 0.4s ease;
-}
-
-.card:hover .card-icon {
-    transform: scale(1.25);
-}
-
-.card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    transition: color 0.3s ease;
-}
-
-.card:hover h3 {
-    color: var(--accent-glow);
-}
-
-.card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    transition: all 0.3s ease;
-}
-
-.card:hover p {
-    color: #d1d5db;
-    font-size: 1rem;
-}
 <!-- Tools Section -->
 <section id="tools">
-  <div class="container">
-    <h2 class="section-title">Proficiency in Tools</h2>
-    <p class="section-subtitle">
-      Software, systems, and administrative platforms used daily.
-    </p>
+<div class="container">
+<h2 class="section-title">Proficiency in Tools</h2>
+<p class="section-subtitle">
+Software, systems, and administrative platforms used daily.
+</p>
 
-    <div class="marquee-wrapper">
-      <div class="marquee-inner">
+<div class="marquee-wrapper">
+<div class="marquee-inner">
 
-        <!-- FIRST SET -->
+<!-- FIRST SET -->
 
-        <div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
-        <div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
-        <div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
-        <div class="tool-square-card"><img src="tools/onedrive.png" alt="OneDrive"><span>OneDrive</span></div>
+<div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
+<div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
+<div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
+<div class="tool-square-card"><img src="tools/onedrive.png" alt="OneDrive"><span>OneDrive</span></div>
 
-        <div class="tool-square-card"><img src="tools/docs.png" alt="Google Docs"><span>Google Docs</span></div>
-        <div class="tool-square-card"><img src="tools/sheets.png" alt="Google Sheets"><span>Google Sheets</span></div>
-        <div class="tool-square-card"><img src="tools/drive.png" alt="Google Drive"><span>Google Drive</span></div>
-        <div class="tool-square-card"><img src="tools/gmail.png" alt="Gmail"><span>Gmail</span></div>
-        <div class="tool-square-card"><img src="tools/calendar.png" alt="Google Calendar"><span>Google Calendar</span></div>
+<div class="tool-square-card"><img src="tools/docs.png" alt="Google Docs"><span>Google Docs</span></div>
+<div class="tool-square-card"><img src="tools/sheets.png" alt="Google Sheets"><span>Google Sheets</span></div>
+<div class="tool-square-card"><img src="tools/drive.png" alt="Google Drive"><span>Google Drive</span></div>
+<div class="tool-square-card"><img src="tools/gmail.png" alt="Gmail"><span>Gmail</span></div>
+<div class="tool-square-card"><img src="tools/calendar.png" alt="Google Calendar"><span>Google Calendar</span></div>
 
-        <div class="tool-square-card"><img src="tools/slack.png" alt="Slack"><span>Slack</span></div>
-        <div class="tool-square-card"><img src="tools/zoom.png" alt="Zoom"><span>Zoom</span></div>
-        <div class="tool-square-card"><img src="tools/teams.png" alt="Microsoft Teams"><span>Microsoft Teams</span></div>
+<div class="tool-square-card"><img src="tools/slack.png" alt="Slack"><span>Slack</span></div>
+<div class="tool-square-card"><img src="tools/zoom.png" alt="Zoom"><span>Zoom</span></div>
+<div class="tool-square-card"><img src="tools/teams.png" alt="Microsoft Teams"><span>Microsoft Teams</span></div>
 
-        <div class="tool-square-card"><img src="tools/salesforce.png" alt="Salesforce"><span>Salesforce</span></div>
-        <div class="tool-square-card"><img src="tools/hubspot.png" alt="HubSpot"><span>HubSpot</span></div>
-        <div class="tool-square-card"><img src="tools/zendesk.png" alt="Zendesk"><span>Zendesk</span></div>
+<div class="tool-square-card"><img src="tools/salesforce.png" alt="Salesforce"><span>Salesforce</span></div>
+<div class="tool-square-card"><img src="tools/hubspot.png" alt="HubSpot"><span>HubSpot</span></div>
+<div class="tool-square-card"><img src="tools/zendesk.png" alt="Zendesk"><span>Zendesk</span></div>
 
-        <div class="tool-square-card"><img src="tools/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
-        <div class="tool-square-card"><img src="tools/canva.png" alt="Canva"><span>Canva</span></div>
-        <div class="tool-square-card"><img src="tools/github.png" alt="GitHub"><span>GitHub</span></div>
+<div class="tool-square-card"><img src="tools/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+<div class="tool-square-card"><img src="tools/canva.png" alt="Canva"><span>Canva</span></div>
+<div class="tool-square-card"><img src="tools/github.png" alt="GitHub"><span>GitHub</span></div>
 
-        <!-- DUPLICATE EVERYTHING BELOW FOR INFINITE LOOP -->
+<!-- DUPLICATE EVERYTHING BELOW FOR INFINITE LOOP -->
 
-        <div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
-        <div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
-        <div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
-        <div class="tool-square-card"><img src="tools/onedrive.png" alt="OneDrive"><span>OneDrive</span></div>
+<div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
+<div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
+<div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
+<div class="tool-square-card"><img src="tools/onedrive.png" alt="OneDrive"><span>OneDrive</span></div>
 
-        <div class="tool-square-card"><img src="tools/docs.png" alt="Google Docs"><span>Google Docs</span></div>
-        <div class="tool-square-card"><img src="tools/sheets.png" alt="Google Sheets"><span>Google Sheets</span></div>
-        <div class="tool-square-card"><img src="tools/drive.png" alt="Google Drive"><span>Google Drive</span></div>
-        <div class="tool-square-card"><img src="tools/gmail.png" alt="Gmail"><span>Gmail</span></div>
-        <div class="tool-square-card"><img src="tools/calendar.png" alt="Google Calendar"><span>Google Calendar</span></div>
+<div class="tool-square-card"><img src="tools/docs.png" alt="Google Docs"><span>Google Docs</span></div>
+<div class="tool-square-card"><img src="tools/sheets.png" alt="Google Sheets"><span>Google Sheets</span></div>
+<div class="tool-square-card"><img src="tools/drive.png" alt="Google Drive"><span>Google Drive</span></div>
+<div class="tool-square-card"><img src="tools/gmail.png" alt="Gmail"><span>Gmail</span></div>
+<div class="tool-square-card"><img src="tools/calendar.png" alt="Google Calendar"><span>Google Calendar</span></div>
 
-        <div class="tool-square-card"><img src="tools/slack.png" alt="Slack"><span>Slack</span></div>
-        <div class="tool-square-card"><img src="tools/zoom.png" alt="Zoom"><span>Zoom</span></div>
-        <div class="tool-square-card"><img src="tools/teams.png" alt="Microsoft Teams"><span>Microsoft Teams</span></div>
+<div class="tool-square-card"><img src="tools/slack.png" alt="Slack"><span>Slack</span></div>
+<div class="tool-square-card"><img src="tools/zoom.png" alt="Zoom"><span>Zoom</span></div>
+<div class="tool-square-card"><img src="tools/teams.png" alt="Microsoft Teams"><span>Microsoft Teams</span></div>
 
-        <div class="tool-square-card"><img src="tools/salesforce.png" alt="Salesforce"><span>Salesforce</span></div>
-        <div class="tool-square-card"><img src="tools/hubspot.png" alt="HubSpot"><span>HubSpot</span></div>
-        <div class="tool-square-card"><img src="tools/zendesk.png" alt="Zendesk"><span>Zendesk</span></div>
+<div class="tool-square-card"><img src="tools/salesforce.png" alt="Salesforce"><span>Salesforce</span></div>
+<div class="tool-square-card"><img src="tools/hubspot.png" alt="HubSpot"><span>HubSpot</span></div>
+<div class="tool-square-card"><img src="tools/zendesk.png" alt="Zendesk"><span>Zendesk</span></div>
 
-        <div class="tool-square-card"><img src="tools/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
-        <div class="tool-square-card"><img src="tools/canva.png" alt="Canva"><span>Canva</span></div>
-        <div class="tool-square-card"><img src="tools/github.png" alt="GitHub"><span>GitHub</span></div>
+<div class="tool-square-card"><img src="tools/chatgpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+<div class="tool-square-card"><img src="tools/canva.png" alt="Canva"><span>Canva</span></div>
+<div class="tool-square-card"><img src="tools/github.png" alt="GitHub"><span>GitHub</span></div>
 
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </section>
 
 
@@ -1244,7 +1236,7 @@ if (selectedPage) selectedPage.classList.add('active');
 window.onclick = function(event) { if (event.target === emailModal) closeEmailModal(); }
 </script>
 
-  <script>
+<script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="HH1kiO8KKej_Mbua3Ma6E";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 </body>
