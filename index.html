@@ -301,7 +301,6 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            /* White balance filter rule tailored for dark backgrounds */
             opacity: 0.85;
             transition: all 0.3s ease;
         }
@@ -373,78 +372,37 @@
             line-height: 1.6;
         }
 
-        /* --- Full-Screen Dedicated Deep Dive Experiences --- */
-        .xp-page-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 15, 25, 0.4); /* Made transparent to allow seamless background visibility during layout hover */
-            backdrop-filter: blur(8px);
-            z-index: 20000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            padding: 40px 24px;
-        }
-
-        .xp-page-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .xp-page-content {
-            background: rgba(17, 24, 39, 0.98);
-            border: 1px solid var(--border-color);
-            width: 100%;
+        /* --- FIXED: Integrated Preview Panel Below Logos --- */
+        .xp-preview-container {
             max-width: 750px;
-            border-radius: 24px;
-            padding: 48px;
+            margin: 40px auto 0 auto;
+            min-height: 250px; /* Reserves space so page layout doesn't violently jump */
             position: relative;
-            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
-            transform: translateY(20px);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .xp-page-overlay.active .xp-page-content {
+        .xp-page-inline {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .xp-page-inline.active {
+            display: block;
+            opacity: 1;
             transform: translateY(0);
             border-color: var(--accent-glow);
         }
 
-        .close-xp-btn {
-            position: absolute;
-            top: 32px;
-            right: 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .close-xp-btn:hover {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: #ef4444;
-            color: #ef4444;
-            transform: rotate(90deg);
-        }
-
         .xp-header {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 24px;
+            padding-bottom: 16px;
         }
 
         .xp-header .xp-tag {
@@ -454,19 +412,19 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .xp-header h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             line-height: 1.2;
             color: var(--text-main);
         }
 
         .xp-header .xp-company {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: var(--text-muted);
             margin-top: 4px;
@@ -479,11 +437,11 @@
         .xp-body li {
             color: var(--text-main);
             opacity: 0.85;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
             position: relative;
-            padding-left: 28px;
+            padding-left: 24px;
         }
 
         .xp-body li::before {
@@ -700,11 +658,11 @@
                 height: 110px;
                 padding: 16px;
             }
-            .xp-page-content {
-                padding: 32px 20px;
+            .xp-page-inline {
+                padding: 24px 16px;
             }
             .xp-header h2 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -761,16 +719,16 @@
         </div>
     </section>
 
-    <!-- POSITION 1: Work Experience Section with Logos (Hover-Activated Engine) -->
+    <!-- WORK EXPERIENCE GRID SECTION -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
-            <p class="section-subtitle">Hover your cursor over a logo below to instantly view my role highlights and project details.</p>
+            <p class="section-subtitle">Move your cursor over a logo below to instantly view my role highlights and project details.</p>
             
             <div class="logo-flex-grid">
                 
                 <!-- Logo 1: Barkbus -->
-                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-barkbus')" onmouseleave="closeXpPage('xp-barkbus')">
+                <div class="logo-circle-wrapper" onmouseenter="showXp('xp-barkbus')">
                     <div class="logo-circle">
                         <img src="logos/barkbus.png" alt="Barkbus" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🐾</div>
@@ -779,7 +737,7 @@
                 </div>
 
                 <!-- Logo 2: Phone Animal -->
-                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-phoneanimal')" onmouseleave="closeXpPage('xp-phoneanimal')">
+                <div class="logo-circle-wrapper" onmouseenter="showXp('xp-phoneanimal')">
                     <div class="logo-circle">
                         <img src="logos/phoneanimal.png" alt="Phone Animal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🏠</div>
@@ -788,7 +746,7 @@
                 </div>
 
                 <!-- Logo 3: Telstra -->
-                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-telstra')" onmouseleave="closeXpPage('xp-telstra')">
+                <div class="logo-circle-wrapper" onmouseenter="showXp('xp-telstra')">
                     <div class="logo-circle">
                         <img src="logos/telstra.png" alt="Telstra" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🔵</div>
@@ -797,7 +755,7 @@
                 </div>
 
                 <!-- Logo 4: Xlibris -->
-                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-xlibris')" onmouseleave="closeXpPage('xp-xlibris')">
+                <div class="logo-circle-wrapper" onmouseenter="showXp('xp-xlibris')">
                     <div class="logo-circle">
                         <img src="logos/xlibris.png" alt="Xlibris Publishing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">📚</div>
@@ -806,7 +764,7 @@
                 </div>
 
                 <!-- Logo 5: Wellpoint West -->
-                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-wellpoint')" onmouseleave="closeXpPage('xp-wellpoint')">
+                <div class="logo-circle-wrapper" onmouseenter="showXp('xp-wellpoint')">
                     <div class="logo-circle">
                         <img src="logos/wellpointwest.png" alt="Wellpoint West" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">⚕️</div>
@@ -815,10 +773,108 @@
                 </div>
 
             </div>
+
+            <!-- THE HOVER TARGET DISPLAY CONTAINER (Smooth, anti-blinking inline display framework) -->
+            <div class="xp-preview-container">
+                
+                <!-- Default State Instruction Box -->
+                <div id="xp-placeholder" class="xp-page-inline active" style="text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.1);">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5;">👈 ✨</div>
+                    <h3 style="color: var(--text-muted); font-weight: 500;">Hover over any company logo to review specific employment parameters.</h3>
+                </div>
+
+                <!-- Page 1: Barkbus -->
+                <div id="xp-barkbus" class="xp-page-inline">
+                    <div class="xp-header">
+                        <span class="xp-tag">June 2025 - Dec 2025</span>
+                        <h2>Virtual Assistant & Logistics</h2>
+                        <div class="xp-company">Barkbus</div>
+                    </div>
+                    <div class="xp-body">
+                        <ul>
+                          <li>Handled high-volume inbound customer enquiries, scheduling dog grooming appointments while optimizing groomer routes and availability.</li>
+                          <li>Managed booking logistics by reviewing schedules and strategically assigning appointments to ensure efficient travel time and daily coverage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page 2: Phone Animal -->
+                <div id="xp-phoneanimal" class="xp-page-inline">
+                    <div class="xp-header">
+                        <span class="xp-tag">Dec 2021 - June 2025</span>
+                        <h2>Lead Generation Specialist</h2>
+                        <div class="xp-company">Phone Animal</div>
+                    </div>
+                    <div class="xp-body">
+                        <ul>
+                            <li>Conducted outbound cold calls to homeowners across targeted regions to identify potential sellers and generate qualified leads for a real estate agent.</li>
+                            <li>Built and maintained a consistent sales pipeline by engaging prospects, handling objections, and securing interest for follow-up.</li>
+                            <li>Researched and gathered lead information from online platforms such as Zillow, Realtor.com, Redfin, and property databases to identify new opportunities.</li>
+                            <li>Accurately logged prospect data, property details, and conversation outcomes into CRM systems for streamlined follow-up and reporting.</li>
+                            <li>Supported the realtor in optimizing lead conversion by providing well-organized, pre-qualified prospects.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page 3: Telstra -->
+                <div id="xp-telstra" class="xp-page-inline">
+                    <div class="xp-header">
+                        <span class="xp-tag">Nov 2014 - Nov 2020</span>
+                        <h2>Sales & Support Specialist</h2>
+                        <div class="xp-company">Telstra</div>
+                    </div>
+                    <div class="xp-body">
+                        <ul>
+                            <li><strong>Customer Service Representative:</strong> Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach and consistently high satisfaction ratings.</li>
+                            <li><strong>NBN Sales Advisor:</strong> Assisted residential and business clients in transitioning to the NBN network, ensuring a smooth migration and clear understanding of service options.</li>
+                            <li><strong>Hijack Sales (Upselling):</strong> Recommended tailored upgrades and bundles based on client needs, boosting revenue and customer retention through value-based selling.</li>
+                            <li><strong>Outbound B2B Sales Specialist:</strong> Engaged small to mid-sized businesses via cold/warm calls, promoting Telstra services and converting leads into long-term customers.</li>
+                            <li><strong>Inbound Sales Consultant:</strong> Handled product inquiries, provided tailored recommendations, and closed sales while aligning offers with customer needs and budgets.</li>
+                            <li><strong>Customer Experience Analyst:</strong> Analyzed call data to identify service pain points, contributing to improved scripts and workflows that enhanced customer and agent experience.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page 4: Xlibris -->
+                <div id="xp-xlibris" class="xp-page-inline">
+                    <div class="xp-header">
+                        <span class="xp-tag">Nov 2013 - Oct 2014</span>
+                        <h2>Publishing Consultant</h2>
+                        <div class="xp-company">Xlibris Publishing</div>
+                    </div>
+                    <div class="xp-body">
+                        <ul>
+                            <li>Conducted high-volume outbound cold calls to prospective authors, initiating conversations about their writing goals and gauging their readiness to publish.</li>
+                            <li>Identified leads at various stages of the writing process and qualified them based on interest, manuscript status, and publishing intent.</li>
+                            <li>Educated authors on available publishing packages, services, and timelines to build interest and trust in Xlibris as their publishing partner.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page 5: Wellpoint West -->
+                <div id="xp-wellpoint" class="xp-page-inline">
+                    <div class="xp-header">
+                        <span class="xp-tag">Prior Experience</span>
+                        <h2>Claims & Benefits Specialist</h2>
+                        <div class="xp-company">Wellpoint West</div>
+                    </div>
+                    <div class="xp-body">
+                        <ul>
+                            <li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility, coverage details, and plan guidelines.</li>
+                            <li>Verified member eligibility and benefits in real-time to support medical decision-making and claims processing.</li>
+                            <li>Researched and communicated the status of medical and hospital claims, including approvals, denials, and required documentation.</li>
+                            <li>Ensured compliance with HIPAA regulations and maintained confidentiality in all member interactions.</li>
+                            <li>Resolved inquiries efficiently while maintaining empathy and professionalism, contributing to positive member satisfaction scores.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
-    <!-- POSITION 2: Core Skills / Services Grid Layout (Including New Sales Card) -->
+    <!-- Core Skills / Services Grid Layout -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Skills & Strengths</h2>
@@ -863,104 +919,6 @@
             </div>
         </div>
     </section>
-
-    <!-- EXPERIENCE DETAIL PAGES (MODAL ENGINE OVERLAYS) -->
-    
-    <!-- Page 1: Barkbus -->
-    <div id="xp-barkbus" class="xp-page-overlay">
-        <div class="xp-page-content">
-            <div class="xp-header">
-                <span class="xp-tag">June 2025 - Dec 2025</span>
-                <h2>Virtual Assistant & Logistics</h2>
-                <div class="xp-company">Barkbus</div>
-            </div>
-            <div class="xp-body">
-                <ul>
-                    <li>Handled high-volume inbound customer enquiries, scheduling dog grooming appointments while optimizing groomer routes and availability.</li>
-                    <li>Managed booking logistics by reviewing schedules and strategically assigning appointments to ensure efficient travel time and daily coverage.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page 2: Phone Animal -->
-    <div id="xp-phoneanimal" class="xp-page-overlay">
-        <div class="xp-page-content">
-            <div class="xp-header">
-                <span class="xp-tag">Dec 2021 - June 2025</span>
-                <h2>Lead Generation Specialist</h2>
-                <div class="xp-company">Phone Animal</div>
-            </div>
-            <div class="xp-body">
-                <ul>
-                    <li>Conducted outbound cold calls to homeowners across targeted regions to identify potential sellers and generate qualified leads for a real estate agent.</li>
-                    <li>Built and maintained a consistent sales pipeline by engaging prospects, handling objections, and securing interest for follow-up.</li>
-                    <li>Researched and gathered lead information from online platforms such as Zillow, Realtor.com, Redfin, and property databases to identify new opportunities.</li>
-                    <li>Accurately logged prospect data, property details, and conversation outcomes into CRM systems for streamlined follow-up and reporting.</li>
-                    <li>Supported the realtor in optimizing lead conversion by providing well-organized, pre-qualified prospects.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page 3: Telstra -->
-    <div id="xp-telstra" class="xp-page-overlay">
-        <div class="xp-page-content">
-            <div class="xp-header">
-                <span class="xp-tag">Nov 2014 - Nov 2020</span>
-                <h2>Sales & Support Specialist</h2>
-                <div class="xp-company">Telstra</div>
-            </div>
-            <div class="xp-body">
-                <ul>
-                    <li><strong>Customer Service Representative:</strong> Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach and consistently high satisfaction ratings.</li>
-                    <li><strong>NBN Sales Advisor:</strong> Assisted residential and business clients in transitioning to the NBN network, ensuring a smooth migration and clear understanding of service options.</li>
-                    <li><strong>Hijack Sales (Upselling):</strong> Recommended tailored upgrades and bundles based on client needs, boosting revenue and customer retention through value-based selling.</li>
-                    <li><strong>Outbound B2B Sales Specialist:</strong> Engaged small to mid-sized businesses via cold/warm calls, promoting Telstra services and converting leads into long-term customers.</li>
-                    <li><strong>Inbound Sales Consultant:</strong> Handled product inquiries, provided tailored recommendations, and closed sales while aligning offers with customer needs and budgets.</li>
-                    <li><strong>Customer Experience Analyst:</strong> Analyzed call data to identify service pain points, contributing to improved scripts and workflows that enhanced customer and agent experience.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page 4: Xlibris -->
-    <div id="xp-xlibris" class="xp-page-overlay">
-        <div class="xp-page-content">
-            <div class="xp-header">
-                <span class="xp-tag">Nov 2013 - Oct 2014</span>
-                <h2>Publishing Consultant</h2>
-                <div class="xp-company">Xlibris Publishing</div>
-            </div>
-            <div class="xp-body">
-                <ul>
-                    <li>Conducted high-volume outbound cold calls to prospective authors, initiating conversations about their writing goals and gauging their readiness to publish.</li>
-                    <li>Identified leads at various stages of the writing process and qualified them based on interest, manuscript status, and publishing intent.</li>
-                    <li>Educated authors on available publishing packages, services, and timelines to build interest and trust in Xlibris as their publishing partner.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page 5: Wellpoint West -->
-    <div id="xp-wellpoint" class="xp-page-overlay">
-        <div class="xp-page-content">
-            <div class="xp-header">
-                <span class="xp-tag">Prior Experience</span>
-                <h2>Claims & Benefits Specialist</h2>
-                <div class="xp-company">Wellpoint West</div>
-            </div>
-            <div class="xp-body">
-                <ul>
-                    <li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility, coverage details, and plan guidelines.</li>
-                    <li>Verified member eligibility and benefits in real-time to support medical decision-making and claims processing.</li>
-                    <li>Researched and communicated the status of medical and hospital claims, including approvals, denials, and required documentation.</li>
-                    <li>Ensured compliance with HIPAA regulations and maintained confidentiality in all member interactions.</li>
-                    <li>Resolved inquiries efficiently while maintaining empathy and professionalism, contributing to positive member satisfaction scores.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <!-- Proficiency in Tools Section -->
     <section id="tools">
@@ -1032,7 +990,6 @@
                 <h2>Let's build something exceptional together</h2>
                 <p>Ready to automate your workflows, maximize client pipelines, or establish stable multi-channel support infrastructures?</p>
                 
-                <!-- Email Trigger Button -->
                 <button onclick="openEmailModal()" class="btn primary-btn" style="margin-bottom: 30px;">Send Me an Email</button>
                 
                 <div class="contact-info-list" style="color: var(--text-muted);">
@@ -1091,18 +1048,21 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Hover-Activated Experience Detail Panel Controllers
-        function openXpPage(pageId) {
-            const xpPage = document.getElementById(pageId);
-            if (xpPage) {
-                xpPage.classList.add('active');
-            }
-        }
-
-        function closeXpPage(pageId) {
-            const xpPage = document.getElementById(pageId);
-            if (xpPage) {
-                xpPage.classList.remove('active');
+        // ANTI-BLINK HOVER CONTROLLER: Seamless inline tab swapper
+        function showXp(targetId) {
+            // Hide all active inline text pages
+            const pages = document.querySelectorAll('.xp-page-inline');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Hide the default placeholder info text box
+            document.getElementById('xp-placeholder').classList.remove('active');
+            
+            // Show the exact page being hovered over
+            const selectedPage = document.getElementById(targetId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
             }
         }
 
