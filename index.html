@@ -28,6 +28,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -50,13 +54,13 @@
         }
         .bg-glow-2 {
             position: absolute;
-            top: 60%;
+            top: 40%;
             right: -10%;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             background: rgba(2, 132, 199, 0.1);
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(120px);
             z-index: -1;
         }
 
@@ -148,7 +152,7 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 40px;
-            max-width: 540px;
+            max-width: 580px;
         }
 
         /* Action Buttons */
@@ -203,7 +207,7 @@
             padding: 1px;
         }
         .hero-image img {
-            width: 360px;
+            width: 340px;
             max-width: 100%;
             border-radius: 23px;
             display: block;
@@ -219,9 +223,9 @@
             100% { transform: translateY(0px); }
         }
 
-        /* --- Services / Expertise Grid --- */
-        .services {
-            padding: 100px 0;
+        /* --- Sections Layout --- */
+        section {
+            padding: 90px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         .section-title {
@@ -235,13 +239,13 @@
             margin-bottom: 48px;
             font-size: 1rem;
         }
+
+        /* --- Core Expertise / Skills Grid --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1-fraction));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
-
-        /* Glassmorphic Cards Like jomarmanalo.dev */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -256,12 +260,12 @@
             box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
         }
         .card-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
             display: inline-block;
         }
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -271,19 +275,102 @@
             line-height: 1.6;
         }
 
+        /* --- Work Experience Timeline --- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            max-width: 850px;
+        }
+        .timeline-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+        .timeline-item:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .timeline-date {
+            color: var(--accent-glow);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .timeline-company {
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .timeline-item li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline-item li::before {
+            content: "•";
+            color: var(--accent-glow);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        /* --- Tools & Software Cloud --- */
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 800px;
+        }
+        .tool-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .tool-badge:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-glow);
+            color: var(--accent-glow);
+        }
+
         /* --- Footer / Contact Section --- */
         footer {
-            padding: 80px 0 40px 0;
+            padding: 100px 0 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             background: rgba(7, 10, 17, 0.8);
             text-align: center;
         }
         .contact-box {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 40px auto;
         }
         .contact-box h2 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
@@ -291,6 +378,15 @@
         .contact-box p {
             color: var(--text-muted);
             margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        .contact-info-list {
+            margin-top: 24px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+        .contact-info-list p {
+            margin-bottom: 8px;
         }
         .copyright {
             font-size: 0.85rem;
@@ -316,10 +412,10 @@
                 justify-content: center;
             }
             .nav-links {
-                display: none; /* Keeps mobile layout perfectly clean */
+                display: none; 
             }
             .hero-image img {
-                width: 280px;
+                width: 260px;
             }
         }
     </style>
@@ -336,24 +432,24 @@
             <div class="logo">Jan Ira.</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Expertise</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Premium Hero Section Layout -->
-    <section id="about" class="hero">
+    <section id="about" class="hero" style="border-top: none;">
         <div class="container hero-container">
             
             <div class="hero-text">
-                <span class="badge">Available for Projects</span>
+                <span class="badge">Available for Remote Roles</span>
                 <h1>Jan Ira Bantilan</h1>
-                <h2>Virtual Assistant & Operations Expert</h2>
+                <h2>Virtual Assistant</h2>
                 <p>
-                    With over 14 years of experience specializing in customer support, 
-                    strategic lead generation, client appointment setting, and advanced administrative execution. 
-                    I systematically optimize workflows and expand business client bases.
+                    I am a highly proactive and organized Virtual Assistant with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations. I am eager to excel in a challenging role while continuously expanding my skill set.
                 </p>
                 <div class="cta-group">
                     <a href="#contact" class="btn primary-btn">Get In Touch</a>
@@ -370,31 +466,184 @@
         </div>
     </section>
 
-    <!-- Glassmorphic Services Layout Grid -->
-    <section id="services" class="services">
+    <!-- Core Skills / Services Grid Layout -->
+    <section id="skills">
         <div class="container">
-            <h2 class="section-title">Core Expertise</h2>
-            <p class="section-subtitle">Premium solutions engineered to scale your daily business processes.</p>
+            <h2 class="section-title">Skills & Strengths</h2>
+            <p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
             
             <div class="grid">
-                <!-- Card 1 -->
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Customer Service</h3>
+                    <p>Resolving inquiries across multi-channel support tracks, protecting client retention, and ensuring elite user satisfaction.</p>
+                </div>
                 <div class="card">
                     <span class="card-icon">🎯</span>
                     <h3>Lead Generation</h3>
-                    <p>Targeting, filtering, and curating high-value prospects aligned with your brand metrics to supercharge sales funnels.</p>
+                    <p>Mining data, tracking targets, and compiling pristine lead profiles to consistently fuel target sales pipelines.</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="card">
-                    <span class="card-icon">⚡</span>
-                    <h3>Customer Support</h3>
-                    <p>Building flawless omni-channel customer experiences that drastically elevate client retention and brand reputation.</p>
-                </div>
-                <!-- Card 3 -->
                 <div class="card">
                     <span class="card-icon">📅</span>
-                    <h3>Appointment Setting</h3>
-                    <p>Managing high-profile outreach, tracking calendars, and bridging communication gaps to keep your meeting calendar full.</p>
+                    <h3>Email Management</h3>
+                    <p>Sorting critical communications, organizing operational workflows, and keeping administrative engines running cleanly.</p>
                 </div>
+                <div class="card">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Claims & Benefits</h3>
+                    <p>Processing health program coverage, analyzing claims variables, and managing delicate verification tasks securely.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📱</span>
+                    <h3>Social Media & Design</h3>
+                    <p>Drafting brand-oriented content pipelines, managing channels, and executing fundamental photo and video edits.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👥</span>
+                    <h3>Onboarding & Training</h3>
+                    <p>Guiding structural onboarding parameters, training resources, and designing unified procedural scripts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Timeline Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">Chronological breakdown of professional support history.</p>
+            
+            <div class="timeline">
+                
+                <!-- Job 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">June 2025 - December 2025</div>
+                    <h3 class="timeline-title">Virtual Assistant / Logistics Coordinator</h3>
+                    <div class="timeline-company">Pet Grooming Operations</div>
+                    <ul>
+                        <li>Handled high-volume inbound customer enquiries, scheduling dog grooming appointments while optimizing groomer routes and availability.</li>
+                        <li>Managed booking logistics by reviewing schedules and strategically assigning appointments to ensure efficient travel time and daily coverage.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">December 2021 - June 2025</div>
+                    <h3 class="timeline-title">Real Estate Lead Generation Specialist</h3>
+                    <div class="timeline-company">Real Estate Operations</div>
+                    <ul>
+                        <li>Conducted outbound cold calls to homeowners across targeted regions to identify potential sellers and generate qualified leads for a real estate agent.</li>
+                        <li>Built and maintained a consistent sales pipeline by engaging prospects, handling objections, and securing interest for follow-up.</li>
+                        <li>Researched and gathered lead information from online platforms such as Zillow, Realtor.com, Redfin, and property databases to identify new opportunities.</li>
+                        <li>Accurately logged prospect data, property details, and conversation outcomes into CRM systems for streamlined follow-up and reporting.</li>
+                        <li>Supported the realtor in optimizing lead conversion by providing well-organized, pre-qualified prospects.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2014 - November 2020</div>
+                    <h3 class="timeline-title">Multi-Role Sales & Support Specialist</h3>
+                    <div class="timeline-company">Telstra Operations</div>
+                    <ul>
+                        <li><strong>Customer Service Representative:</strong> Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach and consistently high satisfaction ratings.</li>
+                        <li><strong>NBN Sales Advisor:</strong> Assisted residential and business clients in transitioning to the NBN network, ensuring a smooth migration and clear understanding of service options.</li>
+                        <li><strong>Hijack Sales (Upselling):</strong> Recommended tailored upgrades and bundles based on client needs, boosting revenue and customer retention through value-based selling.</li>
+                        <li><strong>Outbound B2B Sales Specialist:</strong> Engaged small to mid-sized businesses via cold/warm calls, promoting Telstra services and converting leads into long-term customers.</li>
+                        <li><strong>Inbound Sales Consultant:</strong> Handled product inquiries, provided tailored recommendations, and closed sales while aligning offers with customer needs and budgets.</li>
+                        <li><strong>Customer Experience Analyst:</strong> Analyzed call data to identify service pain points, contributing to improved scripts and workflows that enhanced customer and agent experience.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">November 2013 - October 2014</div>
+                    <h3 class="timeline-title">Outbound Publishing Consultant</h3>
+                    <div class="timeline-company">Xlibris Publishing</div>
+                    <ul>
+                        <li>Conducted high-volume outbound cold calls to prospective authors, initiating conversations about their writing goals and gauging their readiness to publish.</li>
+                        <li>Identified leads at various stages of the writing process and qualified them based on interest, manuscript status, and publishing intent.</li>
+                        <li>Educated authors on available publishing packages, services, and timelines to build interest and trust in Xlibris as their publishing partner.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Prior Experience</div>
+                    <h3 class="timeline-title">Claims & Benefits Specialist</h3>
+                    <div class="timeline-company">Healthcare Provider Services</div>
+                    <ul>
+                        <li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility, coverage details, and plan guidelines.</li>
+                        <li>Verified member eligibility and benefits in real-time to support medical decision-making and claims processing.</li>
+                        <li>Researched and communicated the status of medical and hospital claims, including approvals, denials, and required documentation.</li>
+                        <li>Ensured compliance with HIPAA regulations and maintained confidentiality in all member interactions.</li>
+                        <li>Resolved inquiries efficiently while maintaining empathy and professionalism, contributing to positive member satisfaction scores.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Proficiency in Tools Section -->
+    <section id="tools">
+        <div class="container">
+            <h2 class="section-title">Proficiency in Tools</h2>
+            <p class="section-subtitle">Software, systems, and administrative platforms used daily.</p>
+            <div class="tools-container">
+                <span class="tool-badge">MS Word</span>
+                <span class="tool-badge">MS Excel</span>
+                <span class="tool-badge">MS PowerPoint</span>
+                <span class="tool-badge">One Drive</span>
+                <span class="tool-badge">Outlook</span>
+                <span class="tool-badge">Gmail</span>
+                <span class="tool-badge">Google Drive</span>
+                <span class="tool-badge">Google Docs</span>
+                <span class="tool-badge">Google Sheets</span>
+                <span class="tool-badge">Canva</span>
+                <span class="tool-badge">Zoom</span>
+                <span class="tool-badge">Trello</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic milestones and educational roots.</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                
+                <div class="card" style="padding: 24px;">
+                    <div class="timeline-date">2006 - 2008</div>
+                    <h3>Andres Bonifacio University</h3>
+                    <p style="color: var(--accent-glow); margin-bottom: 8px;">Bachelor of Science in Nursing</p>
+                </div>
+
+                <div class="card" style="padding: 24px;">
+                    <div class="timeline-date">2002 - 2006</div>
+                    <h3>Jose Rizal State University</h3>
+                    <p style="color: var(--accent-glow); margin-bottom: 8px;">Graduated with Honors</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests">
+        <div class="container">
+            <h2 class="section-title">Interests & Traits</h2>
+            <p class="section-subtitle">A quick snapshot of what drives me outside of remote work parameters.</p>
+            <div class="tools-container">
+                <span class="tool-badge">Tech Savvy</span>
+                <span class="tool-badge">Photography</span>
+                <span class="tool-badge">Pet-lover</span>
+                <span class="tool-badge">Biking</span>
+                <span class="tool-badge">Hiking</span>
+                <span class="tool-badge">Traveling</span>
+                <span class="tool-badge">Watching Movies</span>
+                <span class="tool-badge">Listening to Music</span>
             </div>
         </div>
     </section>
@@ -404,12 +653,18 @@
         <div class="container">
             <div class="contact-box">
                 <h2>Let's build something exceptional together</h2>
-                <p>Ready to automate your workflows, maximize incoming client acquisition pipelines, or stabilize support frameworks?</p>
-                <a href="mailto:your-email@example.com" class="btn primary-btn">Hire Me Now</a>
+                <p>Ready to automate your workflows, maximize client pipelines, or establish stable multi-channel support infrastructures?</p>
+                
+                <a href="mailto:janirabantilan@gmail.com" class="btn primary-btn" style="margin-bottom: 30px;">Email Jan Ira</a>
+                
+                <div class="contact-info-list" style="color: var(--text-muted);">
+                    <p style="margin-bottom: 6px;">📱 Phone: <strong style="color: var(--text-main);">09755572157</strong></p>
+                    <p style="margin-bottom: 6px;">📍 Location: <strong style="color: var(--text-main);">598 Dipolog City, Philippines</strong></p>
+                </div>
             </div>
             
             <div class="copyright">
-                &copy; 2026 Jan Ira Bantilan. Designed with high-performance minimalist architecture.
+                &copy; 2026 Jan Ira Bantilan. Designed with premium high-performance aesthetic architecture.
             </div>
         </div>
     </footer>
