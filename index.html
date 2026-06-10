@@ -263,13 +263,13 @@ margin-bottom: 48px;
 font-size: 1rem;
 }
 
-/* --- Company Circular Logo Grid Layout --- */
+/* --- Company Circular Logo Grid Layout (2x BIGGER MODIFICATION) --- */
 .logo-flex-grid {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 align-items: center;
-gap: 30px;
+gap: 32px;
 padding: 20px 0;
 }
 
@@ -283,18 +283,18 @@ position: relative;
 }
 
 .logo-circle {
-width: 120px;
-height: 120px;
+width: 240px; /* Scaled 2x up from 120px */
+height: 240px; /* Scaled 2x up from 120px */
 border-radius: 50%;
 background: var(--card-bg);
 border: 2px solid var(--border-color);
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 20px;
+padding: 32px;
 backdrop-filter: blur(8px);
 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .logo-circle img {
@@ -306,14 +306,14 @@ transition: all 0.3s ease;
 }
 
 .logo-text-fallback {
-font-size: 2rem;
+font-size: 3.5rem; /* Scaled proportionally */
 line-height: 1;
 transition: transform 0.3s ease;
 }
 
 .logo-circle-wrapper span.company-label {
-margin-top: 14px;
-font-size: 0.85rem;
+margin-top: 18px;
+font-size: 1rem; /* Slightly enhanced readability text size */
 font-weight: 600;
 color: var(--text-muted);
 transition: color 0.3s ease, transform 0.3s ease;
@@ -322,9 +322,9 @@ letter-spacing: 0.5px;
 
 /* Hover Interactions */
 .logo-circle-wrapper:hover .logo-circle {
-transform: translateY(-8px) scale(1.05);
+transform: translateY(-10px) scale(1.05);
 border-color: var(--accent-glow);
-box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+box-shadow: 0 20px 40px rgba(56, 189, 248, 0.25);
 background: rgba(17, 24, 39, 0.9);
 }
 
@@ -372,11 +372,11 @@ font-size: 0.95rem;
 line-height: 1.6;
 }
 
-/* --- FIXED: Integrated Preview Panel Below Logos --- */
+/* --- Integrated Preview Panel Below Logos --- */
 .xp-preview-container {
 max-width: 750px;
 margin: 40px auto 0 auto;
-min-height: 250px; /* Reserves space so page layout doesn't violently jump */
+min-height: 250px;
 position: relative;
 }
 
@@ -503,8 +503,8 @@ background: rgba(17, 24, 39, 0.9);
 }
 
 .tool-square-card img {
-width: 48px;
-height: 48px;
+width: 56px;
+height: 56px;
 object-fit: contain;
 }
 
@@ -518,6 +518,96 @@ letter-spacing: 0.3px;
 @keyframes infinite-scroll {
 0% { transform: translateX(0); }
 100% { transform: translateX(calc(-50% - 12px)); }
+}
+
+/* --- PREMIUM OVERLAPPING CARDS GRID (Inspired by image_e23118.png) --- */
+.charity-stack-container {
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+width: 100%;
+max-width: 800px;
+margin: 40px auto 0 auto;
+height: 460px; /* Reserve height for card layout perspectives */
+}
+
+.charity-stack-card {
+position: absolute;
+width: 320px;
+height: 420px;
+background: #111827;
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+}
+
+.charity-card-img {
+width: 100%;
+height: 60%;
+background: #1f2937;
+position: relative;
+overflow: hidden;
+}
+
+.charity-card-img img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.charity-card-content {
+padding: 24px;
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: linear-gradient(180deg, rgba(17,24,39,0.5) 0%, rgba(11,15,25,0.9) 100%);
+}
+
+.charity-card-content h3 {
+font-size: 1.15rem;
+font-weight: 700;
+color: var(--text-main);
+margin-bottom: 8px;
+line-height: 1.3;
+}
+
+.charity-card-content p {
+font-size: 0.85rem;
+color: var(--text-muted);
+line-height: 1.5;
+}
+
+/* Exact positional styling replicating the multi-dimensional layout of image_e23118.png */
+.charity-card-1 {
+left: calc(50% - 240px);
+transform: rotate(-4deg) translateY(15px);
+z-index: 10;
+}
+
+.charity-card-2 {
+left: calc(50% - -20px);
+transform: rotate(4deg) translateY(-5px);
+z-index: 20;
+}
+
+/* Premium Hover/Enlargement Interactions */
+.charity-stack-card:hover {
+transform: scale(1.12) rotate(0deg) translateY(-25px);
+z-index: 1000 !important;
+border-color: var(--accent-glow);
+box-shadow: 0 30px 60px rgba(56, 189, 248, 0.3);
+}
+
+.charity-stack-card:hover .charity-card-img img {
+transform: scale(1.06);
 }
 
 /* --- Dedicated Email Form Modal Box Setup --- */
@@ -695,9 +785,25 @@ width: 260px;
 gap: 20px;
 }
 .logo-circle {
-width: 105px;
-height: 105px;
-padding: 14px;
+width: 180px; /* Scaled cleanly downward on tablets */
+height: 180px;
+padding: 20px;
+}
+.charity-stack-container {
+height: 780px;
+flex-direction: column;
+gap: 24px;
+}
+.charity-stack-card {
+position: relative;
+left: auto !important;
+top: auto !important;
+transform: none !important;
+width: 90%;
+max-width: 340px;
+}
+.charity-stack-card:hover {
+transform: scale(1.05) translateY(-5px) !important;
 }
 .xp-page-inline {
 padding: 24px 16px;
@@ -705,7 +811,9 @@ padding: 24px 16px;
 .xp-header h2 {
 font-size: 1.5rem;
 }
-}/* --- Floating Experience Badge Styling (2x Bigger) --- */
+}
+
+/* --- Floating Experience Badge Styling --- */
 .floating-experience-badge {
 position: fixed;
 top: 100px; 
@@ -723,7 +831,6 @@ transform: scale(1.05);
 filter: drop-shadow(0 20px 40px rgba(56, 189, 248, 0.5));
 }
 
-/* Mobile View - Scaled up safely for phone screens */
 @media (max-width: 768px) {
 .floating-experience-badge {
 top: 90px;
@@ -754,6 +861,7 @@ width: 150px;
 <li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#tools">Tools</a></li>
+<li><a href="#charity">Charity</a></li>
 <li><a href="#education">Education</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
@@ -859,7 +967,7 @@ I am a highly proactive and organized Professional with a strong sense of respon
 
 </div>
 
-<!-- THE HOVER TARGET DISPLAY CONTAINER (Smooth, anti-blinking inline display framework) -->
+<!-- THE HOVER TARGET DISPLAY CONTAINER -->
 <div class="xp-preview-container">
 
 <!-- Default State Instruction Box -->
@@ -904,7 +1012,7 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <!-- Page 3: Royal Vending Australia -->
 <div id="xp-royalvending" class="xp-page-inline">
 <div class="xp-header">
-<span class="xp-tag">July 2025 - December 2026 (Part Time)</span>
+<span class="xp-tag">July 2025 - December 2025 (Part Time)</span>
 <h2>Business Development Representative</h2>
 <div class="xp-company">Royal Vending Australia</div>
 </div>
@@ -939,7 +1047,7 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <!-- Page 5: Sprint -->
 <div id="xp-sprint" class="xp-page-inline">
 <div class="xp-header">
-<span class="xp-tag">Prior Telecommunications Service</span>
+<span class="xp-tag">March 2010 - November 2013</span>
 <h2>Customer Service & Tech Support Rep</h2>
 <div class="xp-company">Sprint</div>
 </div>
@@ -1038,128 +1146,163 @@ I am a highly proactive and organized Professional with a strong sense of respon
 </div>
 </section>
 
-<!-- Proficiency in Tools Section (FIXED: Auto-Scrolling Big Squares Logos Panel) -->
+<!-- Proficiency in Tools Section (Prepped for full-card branding images) -->
 <section id="tools">
 <div class="container">
 <h2 class="section-title">Proficiency in Tools</h2>
 <p class="section-subtitle">Software, systems, and administrative platforms used daily (Hover to pause motion).</p>
 
-
 <div class="marquee-wrapper">
 <div class="marquee-inner">
 <!-- Card 1 -->
 <div class="tool-square-card">
-<img src="tools/word.png" alt="MS Word" onerror="this.style.display='none';">
+<img src="tools/word.png" alt="MS Word">
 <span>MS Word</span>
 </div>
 <!-- Card 2 -->
 <div class="tool-square-card">
-<img src="tools/excel.png" alt="MS Excel" onerror="this.style.display='none';">
+<img src="tools/excel.png" alt="MS Excel">
 <span>MS Excel</span>
 </div>
 <!-- Card 3 -->
 <div class="tool-square-card">
-<img src="tools/powerpoint.png" alt="MS PowerPoint" onerror="this.style.display='none';">
+<img src="tools/powerpoint.png" alt="MS PowerPoint">
 <span>MS PowerPoint</span>
 </div>
 <!-- Card 4 -->
 <div class="tool-square-card">
-<img src="tools/onedrive.png" alt="One Drive" onerror="this.style.display='none';">
+<img src="tools/onedrive.png" alt="One Drive">
 <span>One Drive</span>
 </div>
 <!-- Card 5 -->
 <div class="tool-square-card">
-<img src="tools/outlook.png" alt="Outlook" onerror="this.style.display='none';">
+<img src="tools/outlook.png" alt="Outlook">
 <span>Outlook</span>
 </div>
 <!-- Card 6 -->
 <div class="tool-square-card">
-<img src="tools/gmail.png" alt="Gmail" onerror="this.style.display='none';">
+<img src="tools/gmail.png" alt="Gmail">
 <span>Gmail</span>
 </div>
 <!-- Card 7 -->
 <div class="tool-square-card">
-<img src="tools/googledrive.png" alt="Google Drive" onerror="this.style.display='none';">
+<img src="tools/googledrive.png" alt="Google Drive">
 <span>Google Drive</span>
 </div>
 <!-- Card 8 -->
 <div class="tool-square-card">
-<img src="tools/googledocs.png" alt="Google Docs" onerror="this.style.display='none';">
+<img src="tools/googledocs.png" alt="Google Docs">
 <span>Google Docs</span>
 </div>
 <!-- Card 9 -->
 <div class="tool-square-card">
-<img src="tools/googlesheets.png" alt="Google Sheets" onerror="this.style.display='none';">
+<img src="tools/googlesheets.png" alt="Google Sheets">
 <span>Google Sheets</span>
 </div>
 <!-- Card 10 -->
 <div class="tool-square-card">
-<img src="tools/canva.png" alt="Canva" onerror="this.style.display='none';">
+<img src="tools/canva.png" alt="Canva">
 <span>Canva</span>
 </div>
 <!-- Card 11 -->
 <div class="tool-square-card">
-<img src="tools/zoom.png" alt="Zoom" onerror="this.style.display='none';">
+<img src="tools/zoom.png" alt="Zoom">
 <span>Zoom</span>
 </div>
 <!-- Card 12 -->
 <div class="tool-square-card">
-<img src="tools/trello.png" alt="Trello" onerror="this.style.display='none';">
+<img src="tools/trello.png" alt="Trello">
 <span>Trello</span>
 </div>
 
-<!-- ================= MARQUEE DUPLICATE BUFFER LOOP (Crucial for infinite scroll seamless animation) ================= -->
+<!-- ================= MARQUEE DUPLICATE BUFFER LOOP ================= -->
 <div class="tool-square-card">
-<img src="tools/word.png" alt="MS Word" onerror="this.style.display='none';">
+<img src="tools/word.png" alt="MS Word">
 <span>MS Word</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/excel.png" alt="MS Excel" onerror="this.style.display='none';">
+<img src="tools/excel.png" alt="MS Excel">
 <span>MS Excel</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/powerpoint.png" alt="MS PowerPoint" onerror="this.style.display='none';">
+<img src="tools/powerpoint.png" alt="MS PowerPoint">
 <span>MS PowerPoint</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/onedrive.png" alt="One Drive" onerror="this.style.display='none';">
+<img src="tools/onedrive.png" alt="One Drive">
 <span>One Drive</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/outlook.png" alt="Outlook" onerror="this.style.display='none';">
+<img src="tools/outlook.png" alt="Outlook">
 <span>Outlook</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/gmail.png" alt="Gmail" onerror="this.style.display='none';">
+<img src="tools/gmail.png" alt="Gmail">
 <span>Gmail</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/googledrive.png" alt="Google Drive" onerror="this.style.display='none';">
+<img src="tools/googledrive.png" alt="Google Drive">
 <span>Google Drive</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/googledocs.png" alt="Google Docs" onerror="this.style.display='none';">
+<img src="tools/googledocs.png" alt="Google Docs">
 <span>Google Docs</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/googlesheets.png" alt="Google Sheets" onerror="this.style.display='none';">
+<img src="tools/googlesheets.png" alt="Google Sheets">
 <span>Google Sheets</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/canva.png" alt="Canva" onerror="this.style.display='none';">
+<img src="tools/canva.png" alt="Canva">
 <span>Canva</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/zoom.png" alt="Zoom" onerror="this.style.display='none';">
+<img src="tools/zoom.png" alt="Zoom">
 <span>Zoom</span>
 </div>
 <div class="tool-square-card">
-<img src="tools/trello.png" alt="Trello" onerror="this.style.display='none';">
+<img src="tools/trello.png" alt="Trello">
 <span>Trello</span>
 </div>
 </div>
 </div>
 
+</div>
+</section>
+
+<!-- CHARITY SECTION (Staggered Layer-Stack Cards Inspired Verbatim by image_e23118.png Layout) -->
+<section id="charity">
+<div class="container">
+<h2 class="section-title">Charity & Community Foundations</h2>
+<p class="section-subtitle">Philanthropic initiatives and non-profit projects I actively support over my career.</p>
+
+<div class="charity-stack-container">
+<!-- Stack Card 1: Telstra Foundation -->
+<div class="charity-stack-card charity-card-1">
+<div class="charity-card-img">
+<img src="charity/telstra_foundation.png" alt="Telstra International Foundation" onerror="this.style.background='#0284c7';">
+</div>
+<div class="charity-card-content">
+<div>
+<h3>Telstra International Foundation</h3>
+<p>Supporting community digital connectivity paths, youth development sponsorships, and global disaster relief efforts.</p>
+</div>
+</div>
+</div>
+
+<!-- Stack Card 2: Pinnacle Foundation -->
+<div class="charity-stack-card charity-card-2">
+<div class="charity-card-img">
+<img src="charity/pinnacle_foundation.png" alt="Pinnacle Property Group Foundation" onerror="this.style.background='#38bdf8';">
+</div>
+<div class="charity-card-content">
+<div>
+<h3>Pinnacle Property Group Foundation</h3>
+<p>Providing regional shelter support infrastructure systems and empowering community housing developments safely.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
@@ -1277,7 +1420,6 @@ document.body.style.overflow = 'hidden';
 function closeEmailModal() {
 emailModal.classList.remove('active');
 document.body.style.overflow = 'auto';
-// Reset the form layout back to normal after the modal closes
 setTimeout(() => {
 if (contactForm && successMessage) {
 contactForm.style.display = 'block';
@@ -1288,42 +1430,32 @@ submitBtn.innerText = "Send Email";
 }, 400);
 }
 
-// ANTI-BLINK HOVER CONTROLLER: Seamless inline tab swapper
+// ANTI-BLINK HOVER CONTROLLER
 function showXp(targetId) {
-// Hide all active inline text pages
 const pages = document.querySelectorAll('.xp-page-inline');
 pages.forEach(page => {
 page.classList.remove('active');
 });
-
-// Hide the default placeholder info text box
 document.getElementById('xp-placeholder').classList.remove('active');
-
-// Show the exact page being hovered over
 const selectedPage = document.getElementById(targetId);
 if (selectedPage) {
 selectedPage.classList.add('active');
 }
 }
 
-// Global Modal Dismiss Click Tracker
 window.onclick = function(event) {
 if (event.target === emailModal) {
 closeEmailModal();
 }
 }
 
-// Handle Form Submission smoothly without leaving the page
 if (contactForm) {
 contactForm.addEventListener('submit', function(event) {
-event.preventDefault(); // Prevents page reload or Formspree redirect route fallback
-
+event.preventDefault(); 
 submitBtn.disabled = true;
 submitBtn.innerText = "Sending...";
-
 const formData = new FormData(contactForm);
 
-// Send data to Formspree via AJAX
 fetch('https://formspree.io/f/xwvjqoyz', {
 method: 'POST',
 body: formData,
@@ -1333,7 +1465,6 @@ headers: {
 })
 .then(response => {
 if (response.ok) {
-// Successfully intercepted. Clear input views and render local success screen container
 contactForm.style.display = 'none';
 successMessage.style.display = 'block';
 contactForm.reset();
