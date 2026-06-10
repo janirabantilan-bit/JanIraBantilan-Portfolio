@@ -7,7 +7,7 @@
     <!-- Modern Font Family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* --- Modern CSS Variables (Themed after jomarmanalo.dev) --- */
@@ -163,10 +163,12 @@
             margin-bottom: 16px;
         }
         .hero-text h2 {
-            font-size: 1.35rem;
-            font-weight: 500;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: var(--accent-glow);
             margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
         }
         .hero-text p {
             color: var(--text-muted);
@@ -261,42 +263,7 @@
             font-size: 1rem;
         }
 
-        /* --- Core Expertise / Skills Grid --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 32px;
-            border-radius: 16px;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-glow);
-            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
-        }
-        .card-icon {
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* --- REDESIGNED: Company Circular Logo Grid Layout --- */
+        /* --- Company Circular Logo Grid Layout --- */
         .logo-flex-grid {
             display: flex;
             flex-wrap: wrap;
@@ -370,7 +337,42 @@
             transform: translateY(-2px);
         }
 
-        /* --- REDESIGNED: Full-Screen Dedicated Deep Dive Experiences --- */
+        /* --- Core Expertise / Skills Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+        }
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- Full-Screen Dedicated Deep Dive Experiences --- */
         .xp-page-overlay {
             position: fixed;
             top: 0;
@@ -723,8 +725,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -738,7 +740,7 @@
             <div class="hero-text">
                 <span class="badge">Available for Remote Roles</span>
                 <h1>Jan Ira Bantilan</h1>
-                <h2>Virtual Assistant</h2>
+                <h2>Virtual Assistant | Customer Support Specialist | Appointment Setter</h2>
                 <p>
                     I am a highly proactive and organized Virtual Assistant with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations. I am eager to excel in a challenging role while continuously expanding my skill set.
                 </p>
@@ -757,48 +759,7 @@
         </div>
     </section>
 
-    <!-- Core Skills / Services Grid Layout -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Strengths</h2>
-            <p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
-            
-            <div class="grid">
-                <div class="card">
-                    <span class="card-icon">⚡</span>
-                    <h3>Customer Service</h3>
-                    <p>Resolving inquiries across multi-channel support tracks, protecting client retention, and ensuring elite user satisfaction.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🎯</span>
-                    <h3>Lead Generation</h3>
-                    <p>Mining data, tracking targets, and compiling pristine lead profiles to consistently fuel target sales pipelines.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">📅</span>
-                    <h3>Email Management</h3>
-                    <p>Sorting critical communications, organizing operational workflows, and keeping administrative engines running cleanly.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🛡️</span>
-                    <h3>Claims & Benefits</h3>
-                    <p>Processing health program coverage, analyzing claims variables, and managing delicate verification tasks securely.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">📱</span>
-                    <h3>Social Media & Design</h3>
-                    <p>Drafting brand-oriented content pipelines, managing channels, and executing fundamental photo and video edits.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">👥</span>
-                    <h3>Onboarding & Training</h3>
-                    <p>Guiding structural onboarding parameters, training resources, and designing unified procedural scripts.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience Section with Logos -->
+    <!-- POSITION 1: Work Experience Section with Logos (Directly Below Profile) -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
@@ -851,6 +812,47 @@
                     <span class="company-label">Wellpoint West</span>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- POSITION 2: Core Skills / Services Grid Layout (Just Below Experience) -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Strengths</h2>
+            <p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Customer Service</h3>
+                    <p>Resolving inquiries across multi-channel support tracks, protecting client retention, and ensuring elite user satisfaction.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎯</span>
+                    <h3>Lead Generation</h3>
+                    <p>Mining data, tracking targets, and compiling pristine lead profiles to consistently fuel target sales pipelines.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📅</span>
+                    <h3>Email Management</h3>
+                    <p>Sorting critical communications, organizing operational workflows, and keeping administrative engines running cleanly.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Claims & Benefits</h3>
+                    <p>Processing health program coverage, analyzing claims variables, and managing delicate verification tasks securely.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📱</span>
+                    <h3>Social Media & Design</h3>
+                    <p>Drafting brand-oriented content pipelines, managing channels, and executing fundamental photo and video edits.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👥</span>
+                    <h3>Onboarding & Training</h3>
+                    <p>Guiding structural onboarding parameters, training resources, and designing unified procedural scripts.</p>
+                </div>
             </div>
         </div>
     </section>
