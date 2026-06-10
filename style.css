@@ -68,3 +68,45 @@
 }
 
 }
+
+.chat-assistant-badge{
+    position:fixed;
+    bottom:95px;
+    right:25px;
+
+    background:linear-gradient(
+        135deg,
+        #38bdf8,
+        #0ea5e9
+    );
+
+    color:#111827;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:700;
+
+    box-shadow:
+        0 10px 30px rgba(56,189,248,.35);
+
+    z-index:9998;
+
+    animation:chatPulse 2s infinite;
+}
+
+@keyframes chatPulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
