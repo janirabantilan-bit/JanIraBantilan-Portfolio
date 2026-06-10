@@ -301,9 +301,10 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-           opacity: 0.85;
-    transition: all 0.3s ease;
-}
+            /* White balance filter rule tailored for dark backgrounds */
+            opacity: 0.85;
+            transition: all 0.3s ease;
+        }
 
         .logo-text-fallback {
             font-size: 2.2rem;
@@ -322,11 +323,14 @@
 
         /* Hover Interactions */
         .logo-circle-wrapper:hover .logo-circle {
-           opacity: 1;
+            transform: translateY(-8px) scale(1.05);
+            border-color: var(--accent-glow);
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+            background: rgba(17, 24, 39, 0.9);
         }
 
         .logo-circle-wrapper:hover .logo-circle img {
-            filter: brightness(0) invert(1) opacity(1);
+            opacity: 1;
         }
 
         .logo-circle-wrapper:hover span.company-label {
@@ -376,14 +380,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--bg-color);
+            background: rgba(11, 15, 25, 0.4); /* Made transparent to allow seamless background visibility during layout hover */
+            backdrop-filter: blur(8px);
             z-index: 20000;
             display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
             padding: 40px 24px;
         }
@@ -394,7 +399,7 @@
         }
 
         .xp-page-content {
-            background: rgba(17, 24, 39, 0.95);
+            background: rgba(17, 24, 39, 0.98);
             border: 1px solid var(--border-color);
             width: 100%;
             max-width: 750px;
@@ -402,8 +407,8 @@
             padding: 48px;
             position: relative;
             box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
-            transform: translateY(30px);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .xp-page-overlay.active .xp-page-content {
@@ -737,9 +742,9 @@
             <div class="hero-text">
                 <span class="badge">Available for Remote Roles</span>
                 <h1>Jan Ira Bantilan</h1>
-                <h2>Virtual Assistant | Customer Support Specialist | Appointment Setter</h2>
+                <h2>Virtual Assistant | Customer Support Specialist | Appointment Setter | Inside Sales Representative | Sales Representative</h2>
                 <p>
-                    I am a highly proactive and organized Virtual Assistant with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations. I am eager to excel in a challenging role while continuously expanding my skill set.
+                    I am a highly proactive and organized Professional with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations. I am eager to excel in a challenging role while continuously expanding my skill set.
                 </p>
                 <div class="cta-group">
                     <button onclick="openEmailModal()" class="btn primary-btn">Get In Touch</button>
@@ -756,16 +761,16 @@
         </div>
     </section>
 
-    <!-- POSITION 1: Work Experience Section with Logos (Directly Below Profile) -->
+    <!-- POSITION 1: Work Experience Section with Logos (Hover-Activated Engine) -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
-            <p class="section-subtitle">Select a company logo below to open a full deep-dive project page detailing my roles and responsibilities.</p>
+            <p class="section-subtitle">Hover your cursor over a logo below to instantly view my role highlights and project details.</p>
             
             <div class="logo-flex-grid">
                 
                 <!-- Logo 1: Barkbus -->
-                <div class="logo-circle-wrapper" onclick="openXpPage('xp-barkbus')">
+                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-barkbus')" onmouseleave="closeXpPage('xp-barkbus')">
                     <div class="logo-circle">
                         <img src="logos/barkbus.png" alt="Barkbus" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🐾</div>
@@ -774,7 +779,7 @@
                 </div>
 
                 <!-- Logo 2: Phone Animal -->
-                <div class="logo-circle-wrapper" onclick="openXpPage('xp-phoneanimal')">
+                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-phoneanimal')" onmouseleave="closeXpPage('xp-phoneanimal')">
                     <div class="logo-circle">
                         <img src="logos/phoneanimal.png" alt="Phone Animal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🏠</div>
@@ -783,7 +788,7 @@
                 </div>
 
                 <!-- Logo 3: Telstra -->
-                <div class="logo-circle-wrapper" onclick="openXpPage('xp-telstra')">
+                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-telstra')" onmouseleave="closeXpPage('xp-telstra')">
                     <div class="logo-circle">
                         <img src="logos/telstra.png" alt="Telstra" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">🔵</div>
@@ -792,7 +797,7 @@
                 </div>
 
                 <!-- Logo 4: Xlibris -->
-                <div class="logo-circle-wrapper" onclick="openXpPage('xp-xlibris')">
+                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-xlibris')" onmouseleave="closeXpPage('xp-xlibris')">
                     <div class="logo-circle">
                         <img src="logos/xlibris.png" alt="Xlibris Publishing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">📚</div>
@@ -801,7 +806,7 @@
                 </div>
 
                 <!-- Logo 5: Wellpoint West -->
-                <div class="logo-circle-wrapper" onclick="openXpPage('xp-wellpoint')">
+                <div class="logo-circle-wrapper" onmouseenter="openXpPage('xp-wellpoint')" onmouseleave="closeXpPage('xp-wellpoint')">
                     <div class="logo-circle">
                         <img src="logos/wellpointwest.png" alt="Wellpoint West" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="logo-text-fallback" style="display:none;">⚕️</div>
@@ -813,13 +818,18 @@
         </div>
     </section>
 
-    <!-- POSITION 2: Core Skills / Services Grid Layout (Just Below Experience) -->
+    <!-- POSITION 2: Core Skills / Services Grid Layout (Including New Sales Card) -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Skills & Strengths</h2>
             <p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
             
             <div class="grid">
+                <div class="card">
+                    <span class="card-icon">📈</span>
+                    <h3>Sales</h3>
+                    <p>Driving standard inside/outside business execution, building high-value corporate client conversions, and expanding commercial account networks.</p>
+                </div>
                 <div class="card">
                     <span class="card-icon">⚡</span>
                     <h3>Customer Service</h3>
@@ -854,12 +864,11 @@
         </div>
     </section>
 
-    <!-- DEDICATED EXPERIENCE DETAIL PAGES (MODAL ENGINE OVERLAYS) -->
+    <!-- EXPERIENCE DETAIL PAGES (MODAL ENGINE OVERLAYS) -->
     
     <!-- Page 1: Barkbus -->
     <div id="xp-barkbus" class="xp-page-overlay">
         <div class="xp-page-content">
-            <button class="close-xp-btn" onclick="closeXpPage('xp-barkbus')">&times;</button>
             <div class="xp-header">
                 <span class="xp-tag">June 2025 - Dec 2025</span>
                 <h2>Virtual Assistant & Logistics</h2>
@@ -877,7 +886,6 @@
     <!-- Page 2: Phone Animal -->
     <div id="xp-phoneanimal" class="xp-page-overlay">
         <div class="xp-page-content">
-            <button class="close-xp-btn" onclick="closeXpPage('xp-phoneanimal')">&times;</button>
             <div class="xp-header">
                 <span class="xp-tag">Dec 2021 - June 2025</span>
                 <h2>Lead Generation Specialist</h2>
@@ -898,7 +906,6 @@
     <!-- Page 3: Telstra -->
     <div id="xp-telstra" class="xp-page-overlay">
         <div class="xp-page-content">
-            <button class="close-xp-btn" onclick="closeXpPage('xp-telstra')">&times;</button>
             <div class="xp-header">
                 <span class="xp-tag">Nov 2014 - Nov 2020</span>
                 <h2>Sales & Support Specialist</h2>
@@ -920,7 +927,6 @@
     <!-- Page 4: Xlibris -->
     <div id="xp-xlibris" class="xp-page-overlay">
         <div class="xp-page-content">
-            <button class="close-xp-btn" onclick="closeXpPage('xp-xlibris')">&times;</button>
             <div class="xp-header">
                 <span class="xp-tag">Nov 2013 - Oct 2014</span>
                 <h2>Publishing Consultant</h2>
@@ -939,7 +945,6 @@
     <!-- Page 5: Wellpoint West -->
     <div id="xp-wellpoint" class="xp-page-overlay">
         <div class="xp-page-content">
-            <button class="close-xp-btn" onclick="closeXpPage('xp-wellpoint')">&times;</button>
             <div class="xp-header">
                 <span class="xp-tag">Prior Experience</span>
                 <h2>Claims & Benefits Specialist</h2>
@@ -1086,12 +1091,11 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Project Deep-Dive Page Controls
+        // Hover-Activated Experience Detail Panel Controllers
         function openXpPage(pageId) {
             const xpPage = document.getElementById(pageId);
             if (xpPage) {
                 xpPage.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -1099,7 +1103,6 @@
             const xpPage = document.getElementById(pageId);
             if (xpPage) {
                 xpPage.classList.remove('active');
-                document.body.style.overflow = 'auto';
             }
         }
 
@@ -1107,10 +1110,6 @@
         window.onclick = function(event) {
             if (event.target === emailModal) {
                 closeEmailModal();
-            }
-            if (event.target.classList.contains('xp-page-overlay')) {
-                event.target.classList.remove('active');
-                document.body.style.overflow = 'auto';
             }
         }
 
