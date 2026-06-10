@@ -488,50 +488,52 @@ border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .marquee-inner {
-display: flex;
-gap: 24px;
-width: max-content;
-animation: infinite-scroll 35s linear infinite;
+    display: flex;
+    gap: 20px;
+    animation: scrollTools 30s linear infinite;
 }
 
 .marquee-wrapper:hover .marquee-inner {
-animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 .tool-square-card {
-width: 170px;
-height: 160px;
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 16px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 12px;
-backdrop-filter: blur(8px);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-transition: all 0.3s ease;
-cursor: pointer;
-}
+    min-width: 130px;
+    height: 130px;
 
-.tool-square-card:hover {
-border-color: var(--accent-glow);
-transform: translateY(-4px);
-box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
-background: rgba(17, 24, 39, 0.9);
+    background: rgba(10, 25, 47, 0.85);
+    border: 1px solid rgba(0, 153, 255, 0.25);
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    padding: 15px;
+
+    transition: all 0.3s ease;
 }
 
 .tool-square-card img {
-width: 56px;
-height: 56px;
-object-fit: contain;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: all 0.3s ease;
 }
 
 .tool-square-card span {
-font-size: 0.9rem;
-font-weight: 600;
-color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.tool-square-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
+    z-index: 10;
 }
 
 @keyframes infinite-scroll {
