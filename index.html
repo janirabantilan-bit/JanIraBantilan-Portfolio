@@ -286,7 +286,7 @@ align-items: center;
 text-align: center;
 cursor: pointer;
 position: relative;
-max-width: 130px; /* Forces maximum sizing achievable side-by-side */
+max-width: 130px;
 }
 
 .logo-circle {
@@ -424,7 +424,7 @@ left: 0;
 font-weight: 700;
 }
 
-/* --- Core Expertise / Skills Grid --- */
+/* --- Grid Systems for Skills & Traits --- */
 .grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -522,7 +522,7 @@ color: var(--text-main);
 100% { transform: translateX(calc(-50% - 12px)); }
 }
 
-/* --- 8-PHOTO OVERLAPPING LUXURY CARDS DECK (Inspired verbatim by image_e23118.png) --- */
+/* --- 8-Photo Overlapping Stack --- */
 .charity-stack-container {
 display: flex;
 justify-content: center;
@@ -531,7 +531,7 @@ position: relative;
 width: 100%;
 max-width: 1000px;
 margin: 60px auto 0 auto;
-height: 500px; /* Preserves perspective height room */
+height: 500px;
 }
 
 .charity-stack-card {
@@ -811,7 +811,7 @@ max-width: 320px;
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
-<li><a href="#skills">Skills</a></li>
+<li><a href="#skills">Skills & Traits</a></li>
 <li><a href="#tools">Tools</a></li>
 <li><a href="#charity">Charity</a></li>
 <li><a href="#education">Education</a></li>
@@ -828,7 +828,7 @@ max-width: 320px;
 <h1>Jan Ira Bantilan</h1>
 <h2>Virtual Assistant | Customer Support Specialist | Appointment Setter | Inside Sales Representative | Sales Representative</h2>
 <p>
-I am a highly proactive and organized Professional with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations.
+I am a highly proactive and organized Professional with <strong>over 15+ years of experience</strong>, backed by a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations.
 </p>
 <div class="cta-group">
 <button onclick="openEmailModal()" class="btn primary-btn">Get In Touch</button>
@@ -1030,15 +1030,27 @@ I am a highly proactive and organized Professional with a strong sense of respon
 </div>
 </section>
 
-<!-- Skills Section -->
+<!-- RESTORED & EXPANDED SKILLS AND TRAITS GRID -->
 <section id="skills">
 <div class="container">
-<h2 class="section-title">Skills & Strengths</h2>
-<p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
+<h2 class="section-title">Skills, Strengths & Traits</h2>
+<p class="section-subtitle">Core execution parameters cultivated through 15+ years of high-level administrative and sales experience.</p>
+
+
+<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Core Expertise & Strengths</h3>
+<div class="grid" style="margin-bottom: 48px;">
+<div class="card"><span class="card-icon">📈</span><h3>Sales & Execution</h3><p>Driving inbound and outbound conversion pathways, overcoming structural friction, and closing business framework agreements.</p></div>
+<div class="card"><span class="card-icon">⚡</span><h3>Customer Service</h3><p>Delivering high-tier omni-channel platform support while defending consumer retention benchmarks.</p></div>
+<div class="card"><span class="card-icon">🎯</span><h3>Lead Generation</h3><p>Prospecting targets, mining accurate data pools, and populating pipelines with verified consumer opportunities.</p></div>
+<div class="card"><span class="card-icon">🗓️</span><h3>Appointment Setting</h3><p>Managing high-precision booking logs and calendar allocations to smoothly connect warm prospects with closer agents.</p></div>
+<div class="card"><span class="card-icon">📞</span><h3>Inside Sales Rep</h3><p>Handling discovery tracks, executing outbound calling loops, and presenting tailored corporate value metrics confidently.</p></div>
+</div>
+
+<h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Professional Behavioral Traits</h3>
 <div class="grid">
-<div class="card"><span class="card-icon">📈</span><h3>Sales</h3><p>Driving standard inside/outside business execution, building high-value corporate client conversions.</p></div>
-<div class="card"><span class="card-icon">⚡</span><h3>Customer Service</h3><p>Resolving inquiries across multi-channel support tracks, protecting client retention.</p></div>
-<div class="card"><span class="card-icon">🎯</span><h3>Lead Generation</h3><p>Mining data, tracking targets, and compiling pristine lead profiles to fuel pipelines.</p></div>
+<div class="card"><span class="card-icon">🛡️</span><h3>Proactive & Responsible</h3><p>Self-driven project management with an unyielding sense of accountability and attention to organizational detail.</p></div>
+<div class="card"><span class="card-icon">🧠</span><h3>Collaborative & Swift Decision Maker</h3><p>Thriving inside matrixed team spaces while applying crisp, logical resolution steps to active procedural blockers.</p></div>
+<div class="card"><span class="card-icon">🌋</span><h3>High-Pressure Management</h3><p>Maintaining clear composure and rapid throughput when balancing concurrent workflows under strict turn-around mandates.</p></div>
 </div>
 </div>
 </section>
@@ -1064,7 +1076,7 @@ I am a highly proactive and organized Professional with a strong sense of respon
 </div>
 </section>
 
-<!-- CHARITY SECTION (8-Photo Staggered Deck Layout) -->
+<!-- CHARITY SECTION -->
 <section id="charity">
 <div class="container">
 <h2 class="section-title">Charity & Community Foundations</h2>
