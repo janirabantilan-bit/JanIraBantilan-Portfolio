@@ -1036,22 +1036,22 @@
             <h3>Send a Message</h3>
             <p>Fill out this form to send an email directly to Jan Ira.</p>
             
-            <form id="portfolioContactForm" onsubmit="handleFormSubmit(event)">
+            <form action="https://formspree.io/f/xwvjqoyz" method="POST">
                 <div class="form-group">
                     <label for="senderName">YOUR NAME</label>
-                    <input type="text" id="senderName" class="form-control" placeholder="John Doe" required>
+                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="senderEmail">YOUR EMAIL ADDRESS</label>
-                    <input type="email" id="senderEmail" class="form-control" placeholder="you@example.com" required>
+                    <input type="email" name="_replyto" class="form-control" placeholder="you@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="emailSubject">SUBJECT</label>
-                    <input type="text" id="emailSubject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required>
+                    <input type="text" name="subject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required>
                 </div>
                 <div class="form-group">
                     <label for="emailMessage">MESSAGE</label>
-                    <textarea id="emailMessage" class="form-control" placeholder="Hi Jan Ira, I stumbled across your portfolio and..." required></textarea>
+                    <textarea name="message" class="form-control" placeholder="Hi Jan Ira, I stumbled across your portfolio and..." required></textarea>
                 </div>
                 <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 10px;">Send Email</button>
             </form>
@@ -1098,17 +1098,7 @@
             }
         }
 
-        // Simulated Delivery Form Response Action
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('senderName').value;
-            const subject = document.getElementById('emailSubject').value;
-
-            alert(`Thank you, ${name}! Your email message regarding "${subject}" has been successfully composed and dispatched to janirabantilan@gmail.com.`);
-            
-            document.getElementById('portfolioContactForm').reset();
-            closeEmailModal();
-        }
+        
     </script>
 <a href="#experience">
         <img src="image_efdf1f.png" alt="Over 15 Years Experience" class="floating-experience-badge">
