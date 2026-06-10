@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* --- Modern CSS Variables (Themed after jomarmanalo.dev) --- */
+/* --- Modern CSS Variables --- */
 :root {
 --bg-color: #0b0f19;
 --card-bg: rgba(17, 24, 39, 0.7);
@@ -71,13 +71,20 @@ margin: 0 auto;
 padding: 0 24px;
 }
 
+/* Extended Margin Container for Logo Lineup */
+.extended-container {
+max-width: 1350px;
+margin: 0 auto;
+padding: 0 40px;
+}
+
 /* --- Navbar Section --- */
 header {
 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 backdrop-filter: blur(12px);
 position: sticky;
 top: 0;
-z-index: 100;
+z-index: 10000;
 background: rgba(11, 15, 25, 0.8);
 }
 .nav-container {
@@ -177,7 +184,6 @@ margin-bottom: 40px;
 max-width: 580px;
 }
 
-/* Action Buttons */
 .cta-group {
 display: flex;
 gap: 16px;
@@ -216,7 +222,6 @@ color: var(--accent-glow);
 transform: translateY(-2px);
 }
 
-/* Profile Image Panel with Float */
 .hero-image {
 flex: 0.8;
 display: flex;
@@ -263,38 +268,40 @@ margin-bottom: 48px;
 font-size: 1rem;
 }
 
-/* --- Company Circular Logo Grid Layout (2x BIGGER MODIFICATION) --- */
-.logo-flex-grid {
+/* --- SINGLE LINE LOGO ROW CONFIGURATION --- */
+.logo-single-line {
 display: flex;
-flex-wrap: wrap;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
-gap: 32px;
-padding: 20px 0;
+gap: 16px;
+padding: 30px 0;
+width: 100%;
 }
 
 .logo-circle-wrapper {
+flex: 1;
 display: flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
 cursor: pointer;
 position: relative;
+max-width: 130px; /* Forces maximum sizing achievable side-by-side */
 }
 
 .logo-circle {
-width: 240px; /* Scaled 2x up from 120px */
-height: 240px; /* Scaled 2x up from 120px */
+width: 100%;
+aspect-ratio: 1 / 1;
 border-radius: 50%;
 background: var(--card-bg);
 border: 2px solid var(--border-color);
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 32px;
+padding: 18%;
 backdrop-filter: blur(8px);
 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .logo-circle img {
@@ -306,25 +313,25 @@ transition: all 0.3s ease;
 }
 
 .logo-text-fallback {
-font-size: 3.5rem; /* Scaled proportionally */
+font-size: 2rem;
 line-height: 1;
-transition: transform 0.3s ease;
 }
 
 .logo-circle-wrapper span.company-label {
-margin-top: 18px;
-font-size: 1rem; /* Slightly enhanced readability text size */
+margin-top: 12px;
+font-size: 0.85rem;
 font-weight: 600;
 color: var(--text-muted);
 transition: color 0.3s ease, transform 0.3s ease;
-letter-spacing: 0.5px;
+letter-spacing: 0.3px;
+white-space: nowrap;
 }
 
-/* Hover Interactions */
+/* Hover Dynamics */
 .logo-circle-wrapper:hover .logo-circle {
-transform: translateY(-10px) scale(1.05);
+transform: translateY(-8px) scale(1.08);
 border-color: var(--accent-glow);
-box-shadow: 0 20px 40px rgba(56, 189, 248, 0.25);
+box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
 background: rgba(17, 24, 39, 0.9);
 }
 
@@ -337,44 +344,9 @@ color: var(--accent-glow);
 transform: translateY(-2px);
 }
 
-/* --- Core Expertise / Skills Grid --- */
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 24px;
-}
-.card {
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-padding: 32px;
-border-radius: 16px;
-backdrop-filter: blur(16px);
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card:hover {
-transform: translateY(-6px);
-border-color: var(--accent-glow);
-box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
-}
-.card-icon {
-font-size: 1.8rem;
-margin-bottom: 16px;
-display: inline-block;
-}
-.card h3 {
-font-size: 1.25rem;
-font-weight: 600;
-margin-bottom: 12px;
-}
-.card p {
-color: var(--text-muted);
-font-size: 0.95rem;
-line-height: 1.6;
-}
-
-/* --- Integrated Preview Panel Below Logos --- */
+/* --- Experience Preview Cards --- */
 .xp-preview-container {
-max-width: 750px;
+max-width: 800px;
 margin: 40px auto 0 auto;
 min-height: 250px;
 position: relative;
@@ -452,11 +424,42 @@ left: 0;
 font-weight: 700;
 }
 
-.xp-body strong {
-color: var(--accent-glow);
+/* --- Core Expertise / Skills Grid --- */
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 24px;
+}
+.card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+padding: 32px;
+border-radius: 16px;
+backdrop-filter: blur(16px);
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover {
+transform: translateY(-6px);
+border-color: var(--accent-glow);
+box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+}
+.card-icon {
+font-size: 1.8rem;
+margin-bottom: 16px;
+display: inline-block;
+}
+.card h3 {
+font-size: 1.25rem;
+font-weight: 600;
+margin-bottom: 12px;
+}
+.card p {
+color: var(--text-muted);
+font-size: 0.95rem;
+line-height: 1.6;
 }
 
-/* --- Infinite Moving Logos Marquee Row for Tools --- */
+/* --- Moving Logos Marquee Row for Tools --- */
 .marquee-wrapper {
 overflow: hidden;
 width: 100%;
@@ -512,7 +515,6 @@ object-fit: contain;
 font-size: 0.9rem;
 font-weight: 600;
 color: var(--text-main);
-letter-spacing: 0.3px;
 }
 
 @keyframes infinite-scroll {
@@ -520,27 +522,27 @@ letter-spacing: 0.3px;
 100% { transform: translateX(calc(-50% - 12px)); }
 }
 
-/* --- PREMIUM OVERLAPPING CARDS GRID (Inspired by image_e23118.png) --- */
+/* --- 8-PHOTO OVERLAPPING LUXURY CARDS DECK (Inspired verbatim by image_e23118.png) --- */
 .charity-stack-container {
 display: flex;
 justify-content: center;
 align-items: center;
 position: relative;
 width: 100%;
-max-width: 800px;
-margin: 40px auto 0 auto;
-height: 460px; /* Reserve height for card layout perspectives */
+max-width: 1000px;
+margin: 60px auto 0 auto;
+height: 500px; /* Preserves perspective height room */
 }
 
 .charity-stack-card {
 position: absolute;
-width: 320px;
-height: 420px;
+width: 250px;
+height: 360px;
 background: #111827;
-border: 1px solid rgba(255, 255, 255, 0.1);
-border-radius: 16px;
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 12px;
 overflow: hidden;
-box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+box-shadow: -10px 15px 35px rgba(0,0,0,0.5);
 transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 cursor: pointer;
 display: flex;
@@ -549,7 +551,7 @@ flex-direction: column;
 
 .charity-card-img {
 width: 100%;
-height: 60%;
+height: 65%;
 background: #1f2937;
 position: relative;
 overflow: hidden;
@@ -563,51 +565,50 @@ transition: transform 0.5s ease;
 }
 
 .charity-card-content {
-padding: 24px;
+padding: 16px;
 flex-grow: 1;
 display: flex;
 flex-direction: column;
-justify-content: space-between;
-background: linear-gradient(180deg, rgba(17,24,39,0.5) 0%, rgba(11,15,25,0.9) 100%);
+background: linear-gradient(180deg, rgba(17,24,39,0.4) 0%, rgba(11,15,25,0.95) 100%);
+}
+
+.charity-card-content span.foundation-badge {
+font-size: 0.65rem;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(--accent-glow);
+margin-bottom: 4px;
+display: inline-block;
 }
 
 .charity-card-content h3 {
-font-size: 1.15rem;
+font-size: 0.95rem;
 font-weight: 700;
 color: var(--text-main);
-margin-bottom: 8px;
 line-height: 1.3;
 }
 
-.charity-card-content p {
-font-size: 0.85rem;
-color: var(--text-muted);
-line-height: 1.5;
-}
+/* Precise Staggered Positioning Loops across the Horizontal Line */
+.cc-1 { left: calc(50% - 420px); transform: rotate(-10deg) translateY(30px); z-index: 10; }
+.cc-2 { left: calc(50% - 310px); transform: rotate(-7deg) translateY(15px); z-index: 20; }
+.cc-3 { left: calc(50% - 200px); transform: rotate(-4deg) translateY(5px); z-index: 30; }
+.cc-4 { left: calc(50% - 90px);  transform: rotate(-1deg) translateY(0px); z-index: 40; }
+.cc-5 { left: calc(50% + 20px);  transform: rotate(2deg) translateY(0px); z-index: 50; }
+.cc-6 { left: calc(50% + 130px); transform: rotate(5deg) translateY(5px); z-index: 60; }
+.cc-7 { left: calc(50% + 240px); transform: rotate(8deg) translateY(15px); z-index: 70; }
+.cc-8 { left: calc(50% + 350px); transform: rotate(11deg) translateY(30px); z-index: 80; }
 
-/* Exact positional styling replicating the multi-dimensional layout of image_e23118.png */
-.charity-card-1 {
-left: calc(50% - 240px);
-transform: rotate(-4deg) translateY(15px);
-z-index: 10;
-}
-
-.charity-card-2 {
-left: calc(50% - -20px);
-transform: rotate(4deg) translateY(-5px);
-z-index: 20;
-}
-
-/* Premium Hover/Enlargement Interactions */
+/* Interactive Hover Enlargement System */
 .charity-stack-card:hover {
-transform: scale(1.12) rotate(0deg) translateY(-25px);
-z-index: 1000 !important;
+transform: scale(1.22) rotate(0deg) translateY(-40px) translateX(0px);
+z-index: 10000 !important;
 border-color: var(--accent-glow);
-box-shadow: 0 30px 60px rgba(56, 189, 248, 0.3);
+box-shadow: 0 35px 70px rgba(56, 189, 248, 0.35);
 }
 
 .charity-stack-card:hover .charity-card-img img {
-transform: scale(1.06);
+transform: scale(1.08);
 }
 
 /* --- Dedicated Email Form Modal Box Setup --- */
@@ -660,7 +661,6 @@ border: none;
 color: var(--text-muted);
 font-size: 1.5rem;
 cursor: pointer;
-transition: color 0.2s ease;
 }
 .close-modal-btn:hover {
 color: #ef4444;
@@ -677,7 +677,6 @@ font-size: 0.9rem;
 margin-bottom: 24px;
 }
 
-/* Form Controls Styling */
 .form-group {
 margin-bottom: 18px;
 text-align: left;
@@ -688,7 +687,6 @@ font-size: 0.85rem;
 font-weight: 600;
 margin-bottom: 8px;
 color: var(--text-main);
-letter-spacing: 0.5px;
 }
 .form-control {
 width: 100%;
@@ -699,13 +697,11 @@ padding: 12px 16px;
 color: var(--text-main);
 font-family: var(--font-stack);
 font-size: 0.95rem;
-transition: all 0.3s ease;
 }
 .form-control:focus {
 outline: none;
 border-color: var(--accent-glow);
 background: rgba(255, 255, 255, 0.05);
-box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
 }
 textarea.form-control {
 resize: none;
@@ -732,15 +728,10 @@ letter-spacing: -0.5px;
 .contact-box p {
 color: var(--text-muted);
 margin-bottom: 32px;
-font-size: 1.05rem;
 }
 .contact-info-list {
 margin-top: 24px;
 color: var(--text-main);
-font-size: 0.95rem;
-}
-.contact-info-list p {
-margin-bottom: 8px;
 }
 .copyright {
 font-size: 0.85rem;
@@ -749,100 +740,61 @@ border-top: 1px solid rgba(255, 255, 255, 0.05);
 padding-top: 40px;
 }
 
-/* --- Responsive Viewports --- */
-@media (max-width: 968px) {
-.nav-container {
-flex-direction: column;
+/* --- Viewports Responsive Adapters --- */
+@media (max-width: 1120px) {
+.logo-single-line {
+flex-wrap: wrap;
 justify-content: center;
-height: auto;
-padding: 15px 0;
-gap: 8px;
+gap: 24px;
 }
-.logo-group {
-align-items: center;
-}
-.hero-container {
-flex-direction: column-reverse;
-text-align: center;
-gap: 48px;
-}
-.hero-text h1 {
-font-size: 2.8rem;
-}
-.hero-text p {
-margin: 0 auto 32px auto;
-}
-.cta-group {
-justify-content: center;
-}
-.nav-links {
-display: none; 
-}
-.hero-image img {
-width: 260px;
-}
-.logo-flex-grid {
-gap: 20px;
-}
-.logo-circle {
-width: 180px; /* Scaled cleanly downward on tablets */
-height: 180px;
-padding: 20px;
+.logo-circle-wrapper {
+flex: none;
+width: 110px;
 }
 .charity-stack-container {
-height: 780px;
-flex-direction: column;
-gap: 24px;
+height: auto;
+flex-wrap: wrap;
+gap: 20px;
+padding: 0 20px;
 }
 .charity-stack-card {
 position: relative;
 left: auto !important;
-top: auto !important;
 transform: none !important;
-width: 90%;
-max-width: 340px;
+width: calc(50% - 10px);
+max-width: 260px;
 }
 .charity-stack-card:hover {
 transform: scale(1.05) translateY(-5px) !important;
 }
-.xp-page-inline {
-padding: 24px 16px;
-}
-.xp-header h2 {
-font-size: 1.5rem;
-}
-}
-
-/* --- Floating Experience Badge Styling --- */
-.floating-experience-badge {
-position: fixed;
-top: 100px; 
-right: 30px; 
-z-index: 9999;
-width: 280px; 
-height: auto;
-cursor: pointer;
-transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
-filter: drop-shadow(0 15px 35px rgba(56, 189, 248, 0.3));
-}
-
-.floating-experience-badge:hover {
-transform: scale(1.05); 
-filter: drop-shadow(0 20px 40px rgba(56, 189, 248, 0.5));
 }
 
 @media (max-width: 768px) {
-.floating-experience-badge {
-top: 90px;
-right: 15px;
-width: 150px; 
+.nav-container {
+flex-direction: column;
+height: auto;
+padding: 15px 0;
+gap: 8px;
+}
+.hero-container {
+flex-direction: column-reverse;
+text-align: center;
+}
+.hero-text h1 {
+font-size: 2.5rem;
+}
+.nav-links {
+display: none; 
+}
+.charity-stack-card {
+width: 100%;
+max-width: 320px;
 }
 }
 </style>
 </head>
 <body>
 
-<!-- Subtle Background Ambient Lights -->
 <div class="bg-glow-1"></div>
 <div class="bg-glow-2"></div>
 
@@ -871,36 +823,33 @@ width: 150px;
 <!-- Premium Hero Section Layout -->
 <section id="about" class="hero" style="border-top: none;">
 <div class="container hero-container">
-
 <div class="hero-text">
 <span class="badge">Available for Remote Roles</span>
 <h1>Jan Ira Bantilan</h1>
 <h2>Virtual Assistant | Customer Support Specialist | Appointment Setter | Inside Sales Representative | Sales Representative</h2>
 <p>
-I am a highly proactive and organized Professional with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations. I am eager to excel in a challenging role while continuously expanding my skill set.
+I am a highly proactive and organized Professional with a strong sense of responsibility and exceptional interpersonal skills. Known for my ability to thrive in a collaborative work environment, make swift decisions, and effectively manage high-pressure situations.
 </p>
 <div class="cta-group">
 <button onclick="openEmailModal()" class="btn primary-btn">Get In Touch</button>
 <a href="resume.pdf" download class="btn secondary-btn">Download Resume</a>
 </div>
 </div>
-
 <div class="hero-image">
 <div class="image-frame">
 <img src="profile.png" alt="Jan Ira Bantilan Portfolio">
 </div>
 </div>
-
 </div>
 </section>
 
-<!-- WORK EXPERIENCE GRID SECTION -->
+<!-- WORK EXPERIENCE SINGLE LINE ROW SECTION -->
 <section id="experience">
-<div class="container">
+<div class="extended-container">
 <h2 class="section-title">Work Experience</h2>
-<p class="section-subtitle">Move your cursor over a logo below to instantly view my role highlights and project details.</p>
+<p class="section-subtitle">Hover your mouse over a logo below to view my core roles and job descriptions without layout wrapping.</p>
 
-<div class="logo-flex-grid">
+<div class="logo-single-line">
 
 <!-- Logo 1: Barkbus -->
 <div class="logo-circle-wrapper" onmouseenter="showXp('xp-barkbus')">
@@ -969,8 +918,6 @@ I am a highly proactive and organized Professional with a strong sense of respon
 
 <!-- THE HOVER TARGET DISPLAY CONTAINER -->
 <div class="xp-preview-container">
-
-<!-- Default State Instruction Box -->
 <div id="xp-placeholder" class="xp-page-inline active" style="text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.1);">
 <div style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5;">👈 ✨</div>
 <h3 style="color: var(--text-muted); font-weight: 500;">Hover over any company logo to review specific employment parameters.</h3>
@@ -1002,9 +949,6 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <ul>
 <li>Conducted outbound cold calls to homeowners across targeted regions to identify potential sellers and generate qualified leads for a real estate agent.</li>
 <li>Built and maintained a consistent sales pipeline by engaging prospects, handling objections, and securing interest for follow-up.</li>
-<li>Researched and gathered lead information from online platforms such as Zillow, Realtor.com, Redfin, and property databases to identify new opportunities.</li>
-<li>Accurately logged prospect data, property details, and conversation outcomes into CRM systems for streamlined follow-up and reporting.</li>
-<li>Supported the realtor in optimizing lead conversion by providing well-organized, pre-qualified prospects.</li>
 </ul>
 </div>
 </div>
@@ -1020,7 +964,6 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <ul>
 <li>Proactively cold-called business owners to identify and target high-potential operators looking to venture into the commercial vending machine market.</li>
 <li>Pitch business frameworks confidently, clearly articulating corporate terms, operating structures, and brand value statements to convert passive prospects.</li>
-<li>Guided clients through fundamental qualification benchmarks while aligning target machine operational criteria with custom premises parameters.</li>
 </ul>
 </div>
 </div>
@@ -1034,12 +977,8 @@ I am a highly proactive and organized Professional with a strong sense of respon
 </div>
 <div class="xp-body">
 <ul>
-<li><strong>Customer Service Representative:</strong> Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach and consistently high satisfaction ratings.</li>
-<li><strong>NBN Sales Advisor:</strong> Assisted residential and business clients in transitioning to the NBN network, ensuring a smooth migration and clear understanding of service options.</li>
-<li><strong>Hijack Sales (Upselling):</strong> Recommended tailored upgrades and bundles based on client needs, boosting revenue and customer retention through value-based selling.</li>
-<li><strong>Outbound B2B Sales Specialist:</strong> Engaged small to mid-sized businesses via cold/warm calls, promoting Telstra services and converting leads into long-term customers.</li>
-<li><strong>Inbound Sales Consultant:</strong> Handled product inquiries, provided tailored recommendations, and closed sales while aligning offers with customer needs and budgets.</li>
-<li><strong>Customer Experience Analyst:</strong> Analyzed call data to identify service pain points, contributing to improved scripts and workflows that enhanced customer and agent experience.</li>
+<li>Customer Service Representative: Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach.</li>
+<li>Outbound B2B Sales Specialist: Engaged small to mid-sized businesses via cold/warm calls, promoting Telstra services and converting leads.</li>
 </ul>
 </div>
 </div>
@@ -1055,8 +994,6 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <ul>
 <li>Delivered multi-tiered troubleshooting paths to diagnose and resolve cellular network vulnerabilities and hardware complications effectively.</li>
 <li>Managed complex account adjustments, itemized billing audits, and strategic plan corrections to protect consumer retention profiles.</li>
-<li>De-escalated volatile account complaints safely, establishing immediate client rapport and providing definitive operational resolutions under pressure.</li>
-<li>Identified feature deficiencies swiftly during service conversations, systematically introducing upgrades and data expansions to secure organic upselling volume.</li>
 </ul>
 </div>
 </div>
@@ -1071,8 +1008,6 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <div class="xp-body">
 <ul>
 <li>Conducted high-volume outbound cold calls to prospective authors, initiating conversations about their writing goals and gauging their readiness to publish.</li>
-<li>Identified leads at various stages of the writing process and qualified them based on interest, manuscript status, and publishing intent.</li>
-<li>Educated authors on available publishing packages, services, and timelines to build interest and trust in Xlibris as their publishing partner.</li>
 </ul>
 </div>
 </div>
@@ -1086,221 +1021,96 @@ I am a highly proactive and organized Professional with a strong sense of respon
 </div>
 <div class="xp-body">
 <ul>
-<li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility, coverage details, and plan guidelines.</li>
-<li>Verified member eligibility and benefits in real-time to support medical decision-making and claims processing.</li>
-<li>Researched and communicated the status of medical and hospital claims, including approvals, denials, and required documentation.</li>
-<li>Ensured compliance with HIPAA regulations and maintained confidentiality in all member interactions.</li>
-<li>Resolved inquiries efficiently while maintaining empathy and professionalism, contributing to positive member satisfaction scores.</li>
+<li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility and coverage details.</li>
 </ul>
 </div>
 </div>
-
 </div>
 
 </div>
 </section>
 
-<!-- Core Skills / Services Grid Layout -->
+<!-- Skills Section -->
 <section id="skills">
 <div class="container">
 <h2 class="section-title">Skills & Strengths</h2>
 <p class="section-subtitle">Core capabilities optimized over 14 years of operational service.</p>
-
 <div class="grid">
-<div class="card">
-<span class="card-icon">📈</span>
-<h3>Sales</h3>
-<p>Driving standard inside/outside business execution, building high-value corporate client conversions, and expanding commercial account networks.</p>
-</div>
-<div class="card">
-<span class="card-icon">⚡</span>
-<h3>Customer Service</h3>
-<p>Resolving inquiries across multi-channel support tracks, protecting client retention, and ensuring elite user satisfaction.</p>
-</div>
-<div class="card">
-<span class="card-icon">🎯</span>
-<h3>Lead Generation</h3>
-<p>Mining data, tracking targets, and compiling pristine lead profiles to consistently fuel target sales pipelines.</p>
-</div>
-<div class="card">
-<span class="card-icon">📅</span>
-<h3>Email Management</h3>
-<p>Sorting critical communications, organizing operational workflows, and keeping administrative engines running cleanly.</p>
-</div>
-<div class="card">
-<span class="card-icon">🛡️</span>
-<h3>Claims & Benefits</h3>
-<p>Processing health program coverage, analyzing claims variables, and managing delicate verification tasks securely.</p>
-</div>
-<div class="card">
-<span class="card-icon">📱</span>
-<h3>Social Media & Design</h3>
-<p>Drafting brand-oriented content pipelines, managing channels, and executing fundamental photo and video edits.</p>
-</div>
-<div class="card">
-<span class="card-icon">👥</span>
-<h3>Onboarding & Training</h3>
-<p>Guiding structural onboarding parameters, training resources, and designing unified procedural scripts.</p>
-</div>
+<div class="card"><span class="card-icon">📈</span><h3>Sales</h3><p>Driving standard inside/outside business execution, building high-value corporate client conversions.</p></div>
+<div class="card"><span class="card-icon">⚡</span><h3>Customer Service</h3><p>Resolving inquiries across multi-channel support tracks, protecting client retention.</p></div>
+<div class="card"><span class="card-icon">🎯</span><h3>Lead Generation</h3><p>Mining data, tracking targets, and compiling pristine lead profiles to fuel pipelines.</p></div>
 </div>
 </div>
 </section>
 
-<!-- Proficiency in Tools Section (Prepped for full-card branding images) -->
+<!-- Tools Section -->
 <section id="tools">
 <div class="container">
 <h2 class="section-title">Proficiency in Tools</h2>
-<p class="section-subtitle">Software, systems, and administrative platforms used daily (Hover to pause motion).</p>
-
+<p class="section-subtitle">Software, systems, and administrative platforms used daily.</p>
 <div class="marquee-wrapper">
 <div class="marquee-inner">
-<!-- Card 1 -->
-<div class="tool-square-card">
-<img src="tools/word.png" alt="MS Word">
-<span>MS Word</span>
-</div>
-<!-- Card 2 -->
-<div class="tool-square-card">
-<img src="tools/excel.png" alt="MS Excel">
-<span>MS Excel</span>
-</div>
-<!-- Card 3 -->
-<div class="tool-square-card">
-<img src="tools/powerpoint.png" alt="MS PowerPoint">
-<span>MS PowerPoint</span>
-</div>
-<!-- Card 4 -->
-<div class="tool-square-card">
-<img src="tools/onedrive.png" alt="One Drive">
-<span>One Drive</span>
-</div>
-<!-- Card 5 -->
-<div class="tool-square-card">
-<img src="tools/outlook.png" alt="Outlook">
-<span>Outlook</span>
-</div>
-<!-- Card 6 -->
-<div class="tool-square-card">
-<img src="tools/gmail.png" alt="Gmail">
-<span>Gmail</span>
-</div>
-<!-- Card 7 -->
-<div class="tool-square-card">
-<img src="tools/googledrive.png" alt="Google Drive">
-<span>Google Drive</span>
-</div>
-<!-- Card 8 -->
-<div class="tool-square-card">
-<img src="tools/googledocs.png" alt="Google Docs">
-<span>Google Docs</span>
-</div>
-<!-- Card 9 -->
-<div class="tool-square-card">
-<img src="tools/googlesheets.png" alt="Google Sheets">
-<span>Google Sheets</span>
-</div>
-<!-- Card 10 -->
-<div class="tool-square-card">
-<img src="tools/canva.png" alt="Canva">
-<span>Canva</span>
-</div>
-<!-- Card 11 -->
-<div class="tool-square-card">
-<img src="tools/zoom.png" alt="Zoom">
-<span>Zoom</span>
-</div>
-<!-- Card 12 -->
-<div class="tool-square-card">
-<img src="tools/trello.png" alt="Trello">
-<span>Trello</span>
-</div>
-
-<!-- ================= MARQUEE DUPLICATE BUFFER LOOP ================= -->
-<div class="tool-square-card">
-<img src="tools/word.png" alt="MS Word">
-<span>MS Word</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/excel.png" alt="MS Excel">
-<span>MS Excel</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/powerpoint.png" alt="MS PowerPoint">
-<span>MS PowerPoint</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/onedrive.png" alt="One Drive">
-<span>One Drive</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/outlook.png" alt="Outlook">
-<span>Outlook</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/gmail.png" alt="Gmail">
-<span>Gmail</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/googledrive.png" alt="Google Drive">
-<span>Google Drive</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/googledocs.png" alt="Google Docs">
-<span>Google Docs</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/googlesheets.png" alt="Google Sheets">
-<span>Google Sheets</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/canva.png" alt="Canva">
-<span>Canva</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/zoom.png" alt="Zoom">
-<span>Zoom</span>
-</div>
-<div class="tool-square-card">
-<img src="tools/trello.png" alt="Trello">
-<span>Trello</span>
+<div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
+<div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
+<div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
+<div class="tool-square-card"><img src="tools/onedrive.png" alt="One Drive"><span>One Drive</span></div>
+<!-- Loop Buffers -->
+<div class="tool-square-card"><img src="tools/word.png" alt="MS Word"><span>MS Word</span></div>
+<div class="tool-square-card"><img src="tools/excel.png" alt="MS Excel"><span>MS Excel</span></div>
+<div class="tool-square-card"><img src="tools/powerpoint.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
+<div class="tool-square-card"><img src="tools/onedrive.png" alt="One Drive"><span>One Drive</span></div>
 </div>
 </div>
-</div>
-
 </div>
 </section>
 
-<!-- CHARITY SECTION (Staggered Layer-Stack Cards Inspired Verbatim by image_e23118.png Layout) -->
+<!-- CHARITY SECTION (8-Photo Staggered Deck Layout) -->
 <section id="charity">
 <div class="container">
 <h2 class="section-title">Charity & Community Foundations</h2>
-<p class="section-subtitle">Philanthropic initiatives and non-profit projects I actively support over my career.</p>
+<p class="section-subtitle">Hover over any photo card in the lineup to enlarge it and bring it to the front of the collection.</p>
 
 <div class="charity-stack-container">
-<!-- Stack Card 1: Telstra Foundation -->
-<div class="charity-stack-card charity-card-1">
-<div class="charity-card-img">
-<img src="charity/telstra_foundation.png" alt="Telstra International Foundation" onerror="this.style.background='#0284c7';">
-</div>
-<div class="charity-card-content">
-<div>
-<h3>Telstra International Foundation</h3>
-<p>Supporting community digital connectivity paths, youth development sponsorships, and global disaster relief efforts.</p>
-</div>
-</div>
+<!-- Telstra Photos (1-4) -->
+<div class="charity-stack-card cc-1">
+<div class="charity-card-img"><img src="charity/telstra_1.png" alt="Telstra Charity Project 1" onerror="this.style.background='#0284c7';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Telstra Int.</span><h3>Digital Literacy Drive</h3></div>
 </div>
 
-<!-- Stack Card 2: Pinnacle Foundation -->
-<div class="charity-stack-card charity-card-2">
-<div class="charity-card-img">
-<img src="charity/pinnacle_foundation.png" alt="Pinnacle Property Group Foundation" onerror="this.style.background='#38bdf8';">
+<div class="charity-stack-card cc-2">
+<div class="charity-card-img"><img src="charity/telstra_2.png" alt="Telstra Charity Project 2" onerror="this.style.background='#0284c7';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Telstra Int.</span><h3>Youth Connectivity</h3></div>
 </div>
-<div class="charity-card-content">
-<div>
-<h3>Pinnacle Property Group Foundation</h3>
-<p>Providing regional shelter support infrastructure systems and empowering community housing developments safely.</p>
+
+<div class="charity-stack-card cc-3">
+<div class="charity-card-img"><img src="charity/telstra_3.png" alt="Telstra Charity Project 3" onerror="this.style.background='#0284c7';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Telstra Int.</span><h3>Regional Support Network</h3></div>
 </div>
+
+<div class="charity-stack-card cc-4">
+<div class="charity-card-img"><img src="charity/telstra_4.png" alt="Telstra Charity Project 4" onerror="this.style.background='#0284c7';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Telstra Int.</span><h3>Community Relief Hubs</h3></div>
 </div>
+
+<!-- Pinnacle Photos (5-8) -->
+<div class="charity-stack-card cc-5">
+<div class="charity-card-img"><img src="charity/pinnacle_1.png" alt="Pinnacle Charity Project 1" onerror="this.style.background='#38bdf8';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Pinnacle Prop.</span><h3>Regional Shelter Projects</h3></div>
+</div>
+
+<div class="charity-stack-card cc-6">
+<div class="charity-card-img"><img src="charity/pinnacle_2.png" alt="Pinnacle Charity Project 2" onerror="this.style.background='#38bdf8';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Pinnacle Prop.</span><h3>Housing Infrastructure</h3></div>
+</div>
+
+<div class="charity-stack-card cc-7">
+<div class="charity-card-img"><img src="charity/pinnacle_3.png" alt="Pinnacle Charity Project 3" onerror="this.style.background='#38bdf8';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Pinnacle Prop.</span><h3>Urban Renovation Systems</h3></div>
+</div>
+
+<div class="charity-stack-card cc-8">
+<div class="charity-card-img"><img src="charity/pinnacle_4.png" alt="Pinnacle Charity Project 4" onerror="this.style.background='#38bdf8';"></div>
+<div class="charity-card-content"><span class="foundation-badge">Pinnacle Prop.</span><h3>Community Development</h3></div>
 </div>
 </div>
 </div>
@@ -1310,61 +1120,22 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <section id="education">
 <div class="container">
 <h2 class="section-title">Education</h2>
-<p class="section-subtitle">Academic milestones and educational roots.</p>
 <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
-
-<div class="card" style="padding: 24px;">
-<div class="timeline-date">2006 - 2008</div>
-<h3>Andres Bonifacio University</h3>
-<p style="color: var(--accent-glow); margin-bottom: 8px;">Bachelor of Science in Nursing</p>
-</div>
-
-<div class="card" style="padding: 24px;">
-<div class="timeline-date">2002 - 2006</div>
-<h3>Jose Rizal State University</h3>
-<p style="color: var(--accent-glow); margin-bottom: 8px;">Graduated with Honors</p>
-</div>
-
+<div class="card"><h3>Andres Bonifacio University</h3><p style="color: var(--accent-glow);">Bachelor of Science in Nursing</p></div>
+<div class="card"><h3>Jose Rizal State University</h3><p style="color: var(--accent-glow);">Graduated with Honors</p></div>
 </div>
 </div>
 </section>
 
-<!-- Interests Section -->
-<section id="interests">
-<div class="container">
-<h2 class="section-title">Interests & Traits</h2>
-<p class="section-subtitle">A quick snapshot of what drives me outside of remote work parameters.</p>
-<div class="tools-container" style="display:flex; flex-wrap:wrap; gap:12px;">
-<span class="tool-badge">Tech Savvy</span>
-<span class="tool-badge">Photography</span>
-<span class="tool-badge">Pet-lover</span>
-<span class="tool-badge">Biking</span>
-<span class="tool-badge">Hiking</span>
-<span class="tool-badge">Traveling</span>
-<span class="tool-badge">Watching Movies</span>
-<span class="tool-badge">Listening to Music</span>
-</div>
-</div>
-</section>
-
-<!-- Clean Layout Contact Section -->
+<!-- Footer Contact Section -->
 <footer id="contact">
 <div class="container">
 <div class="contact-box">
 <h2>Let's build something exceptional together</h2>
 <p>Ready to automate your workflows, maximize client pipelines, or establish stable multi-channel support infrastructures?</p>
-
-<button onclick="openEmailModal()" class="btn primary-btn" style="margin-bottom: 30px;">Send Me an Email</button>
-
-<div class="contact-info-list" style="color: var(--text-muted);">
-<p style="margin-bottom: 6px;">📱 Phone: <strong style="color: var(--text-main);">09525024590</strong></p>
-<p style="margin-bottom: 6px;">📍 Location: <strong style="color: var(--text-main);">598 Dipolog City, Philippines</strong></p>
+<button onclick="openEmailModal()" class="btn primary-btn">Send Me an Email</button>
 </div>
-</div>
-
-<div class="copyright">
-&copy; 2026 Jan Ira Bantilan. Designed with premium high-performance aesthetic architecture.
-</div>
+<div class="copyright">&copy; 2026 Jan Ira Bantilan. Portfolio Design System.</div>
 </div>
 </footer>
 
@@ -1373,124 +1144,38 @@ I am a highly proactive and organized Professional with a strong sense of respon
 <div class="email-box">
 <button class="close-modal-btn" onclick="closeEmailModal()">&times;</button>
 <h3>Send a Message</h3>
-<p>Fill out this form to send an email directly to Jan Ira.</p>
-
 <form id="portfolioContactForm" action="https://formspree.io/f/xwvjqoyz" method="POST">
-<div class="form-group">
-<label for="senderName">YOUR NAME</label>
-<input type="text" id="senderName" name="name" class="form-control" placeholder="John Doe" required>
-</div>
-<div class="form-group">
-<label for="senderEmail">YOUR EMAIL ADDRESS</label>
-<input type="email" id="senderEmail" name="_replyto" class="form-control" placeholder="you@example.com" required>
-</div>
-<div class="form-group">
-<label for="emailSubject">SUBJECT</label>
-<input type="text" id="emailSubject" name="subject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required>
-</div>
-<div class="form-group">
-<label for="emailMessage">MESSAGE</label>
-<textarea id="emailMessage" name="message" class="form-control" placeholder="Hi Jan Ira, I stumbled across your portfolio and..." required></textarea>
-</div>
-<button type="submit" id="submitBtn" class="btn primary-btn" style="width: 100%; margin-top: 10px;">Send Email</button>
+<div class="form-group"><label for="senderName">YOUR NAME</label><input type="text" id="senderName" name="name" class="form-control" placeholder="John Doe" required></div>
+<div class="form-group"><label for="senderEmail">YOUR EMAIL ADDRESS</label><input type="email" id="senderEmail" name="_replyto" class="form-control" placeholder="you@example.com" required></div>
+<div class="form-group"><label for="emailSubject">SUBJECT</label><input type="text" id="emailSubject" name="subject" class="form-control" placeholder="Opportunity" required></div>
+<div class="form-group"><label for="emailMessage">MESSAGE</label><textarea id="emailMessage" name="message" class="form-control" placeholder="Hi Jan Ira..." required></textarea></div>
+<button type="submit" id="submitBtn" class="btn primary-btn" style="width: 100%;">Send Email</button>
 </form>
-
 <div id="formSuccessMessage" style="display: none; text-align: center; padding: 20px 0;">
-<div style="font-size: 3rem; margin-bottom: 10px;">✨</div>
-<h4 style="color: var(--accent-glow); font-size: 1.4rem; margin-bottom: 8px;">Message Sent Successfully!</h4>
-<p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Thank you! Your message has been dispatched straight to Jan Ira's inbox.</p>
+<h4 style="color: var(--accent-glow);">Message Sent Successfully!</h4>
 <button class="btn secondary-btn" onclick="closeEmailModal()">Close Window</button>
 </div>
 </div>
 </div>
 
-<!-- CODE SYSTEM SCRIPT METHODS ENGINE -->
 <script>
-// Email Form Controls
 const emailModal = document.getElementById('contactEmailModal');
 const contactForm = document.getElementById('portfolioContactForm');
 const successMessage = document.getElementById('formSuccessMessage');
 const submitBtn = document.getElementById('submitBtn');
 
-function openEmailModal() {
-emailModal.classList.add('active');
-document.body.style.overflow = 'hidden';
-}
+function openEmailModal() { emailModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeEmailModal() { emailModal.classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-function closeEmailModal() {
-emailModal.classList.remove('active');
-document.body.style.overflow = 'auto';
-setTimeout(() => {
-if (contactForm && successMessage) {
-contactForm.style.display = 'block';
-successMessage.style.display = 'none';
-submitBtn.disabled = false;
-submitBtn.innerText = "Send Email";
-}
-}, 400);
-}
-
-// ANTI-BLINK HOVER CONTROLLER
 function showXp(targetId) {
 const pages = document.querySelectorAll('.xp-page-inline');
-pages.forEach(page => {
-page.classList.remove('active');
-});
+pages.forEach(page => page.classList.remove('active'));
 document.getElementById('xp-placeholder').classList.remove('active');
 const selectedPage = document.getElementById(targetId);
-if (selectedPage) {
-selectedPage.classList.add('active');
-}
+if (selectedPage) selectedPage.classList.add('active');
 }
 
-window.onclick = function(event) {
-if (event.target === emailModal) {
-closeEmailModal();
-}
-}
-
-if (contactForm) {
-contactForm.addEventListener('submit', function(event) {
-event.preventDefault(); 
-submitBtn.disabled = true;
-submitBtn.innerText = "Sending...";
-const formData = new FormData(contactForm);
-
-fetch('https://formspree.io/f/xwvjqoyz', {
-method: 'POST',
-body: formData,
-headers: {
-'Accept': 'application/json'
-}
-})
-.then(response => {
-if (response.ok) {
-contactForm.style.display = 'none';
-successMessage.style.display = 'block';
-contactForm.reset();
-} else {
-response.json().then(data => {
-if (Object.hasOwn(data, 'errors')) {
-alert(data["errors"].map(error => error["message"]).join(", "));
-} else {
-alert("Oops! There was a problem sending your message. Please try again.");
-}
-});
-submitBtn.disabled = false;
-submitBtn.innerText = "Send Email";
-}
-})
-.catch(error => {
-alert("Oops! A network error occurred. Please try again.");
-submitBtn.disabled = false;
-submitBtn.innerText = "Send Email";
-});
-});
-}
+window.onclick = function(event) { if (event.target === emailModal) closeEmailModal(); }
 </script>
-
-<a href="#experience">
-<img src="image_efdf1f.png" alt="Over 15 Years Experience" class="floating-experience-badge">
-</a>
 </body>
 </html>
