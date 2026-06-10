@@ -1036,7 +1036,7 @@
             <h3>Send a Message</h3>
             <p>Fill out this form to send an email directly to Jan Ira.</p>
             
-            <form action="https://formspree.io/f/xwvjqoyz" method="POST">
+            <form id="portfolioContactForm" method="POST">
                 <div class="form-group">
                     <label for="senderName">YOUR NAME</label>
                     <input type="text" name="name" class="form-control" placeholder="John Doe" required>
@@ -1053,10 +1053,15 @@
                     <label for="emailMessage">MESSAGE</label>
                     <textarea name="message" class="form-control" placeholder="Hi Jan Ira, I stumbled across your portfolio and..." required></textarea>
                 </div>
-                <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 10px;">Send Email</button>
+                <button type="submit" id="submitBtn" class="btn primary-btn" style="width: 100%; margin-top: 10px;">Send Email</button>
             </form>
-        </div>
-    </div>
+
+            <div id="formSuccessMessage" style="display: none; text-align: center; padding: 20px 0;">
+                <div style="font-size: 3rem; margin-bottom: 10px;">✨</div>
+                <h4 style="color: var(--accent-glow); font-size: 1.4rem; margin-bottom: 8px;">Message Sent Successfully!</h4>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Thank you! Your message has been dispatched straight to Jan Ira's inbox.</p>
+                <button class="btn secondary-btn" onclick="closeEmailModal()">Close Window</button>
+            </div>
 
     <!-- CODE SYSTEM SCRIPT METHODS ENGINE -->
     <script>
@@ -1099,7 +1104,64 @@
         }
 
         
-    </script>
+  // Handle Form Submission smoothly without leaving the page
+        const contactForm = document.getElementById('portfolioContactForm');
+        const successMessage = document.getElementById('formSuccessMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Stops the page from redirecting to Formspree
+                
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Sending...";
+
+                // Create the data payload to send
+                const formData = new FormData(contactForm);
+
+                // Send data to Formspree silently in the background
+                // IMPORTANT: Replace the 'xxxxxx' below with your actual Formspree ID letters!
+                fetch('https://formspree.io/f/xxxxxx', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Hide the inputs and show the elegant thank you message
+                        contactForm.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        contactForm.reset();
+                    } else {
+                        alert("Ops! There was a problem sending your message. Please try again.");
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Send Email";
+                    }
+                })
+                .catch(error => {
+                    alert("Ops! A network error occurred. Please try again.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send Email";
+                });
+            });
+        }
+
+        // Slight modification to your existing close function to reset views cleanly
+        const originalCloseModal = closeEmailModal;
+        closeEmailModal = function() {
+            originalCloseModal();
+            // Reset the form layout back to normal after the modal completely closes out of sight
+            setTimeout(() => {
+                if (contactForm && successMessage) {
+                    contactForm.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send Email";
+                }
+            }, 400);
+        };  </script>
 <a href="#experience">
         <img src="image_efdf1f.png" alt="Over 15 Years Experience" class="floating-experience-badge">
     </a>
