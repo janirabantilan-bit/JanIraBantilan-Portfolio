@@ -311,7 +311,7 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            height: 310px; /* Locked height so it stays perfectly uniform with skills cards */
+            height: 310px; /* Kept clean and locked to fit skills card height format */
         }
 
         /* Company Logo Container Styling */
@@ -325,7 +325,7 @@
             max-height: 100%;
             max-width: 140px;
             object-fit: contain;
-            filter: brightness(0) invert(1) opacity(0.85); /* Converts logos into sleek white designs */
+            filter: brightness(0) invert(1) opacity(0.85);
         }
         .logo-placeholder {
             font-weight: 700;
@@ -367,7 +367,7 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            overflow: hidden; /* Keeps text preview neat */
+            overflow: hidden;
         }
 
         .exp-card:hover {
@@ -376,47 +376,57 @@
             box-shadow: 0 12px 30px rgba(56, 189, 248, 0.1);
         }
 
-        /* --- Elite Centered Overlay Screen Engine --- */
+        /* --- FIXED: Viewport-Bound Screen Centered Display Overlay Engine --- */
         .details-overlay {
-            position: fixed;
+            position: fixed; /* Breaks out of parent grids safely */
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(7, 10, 19, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
+            width: 100%;
+            height: 100%;
+            background: rgba(7, 10, 19, 0.85); /* Smooth background dimming dim effect */
+            backdrop-filter: blur(10px);
+            z-index: 9999; /* Forces box layer to display above all else */
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 20px;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Center Display Square Box Container */
+        /* Crisp Square Shape Overlay Frame Box */
         .details-box {
             background: #111827;
-            border: 1px solid var(--accent-glow);
-            width: 100%;
-            max-width: 580px;
+            border: 2px solid var(--accent-glow);
+            width: 90%;
+            max-width: 600px; /* Standard visible dimensions */
+            aspect-ratio: 1 / 1; /* Creates the requested true square box look */
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-            max-height: 85vh;
-            overflow-y: auto;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(56, 189, 248, 0.2);
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto; /* Adds custom fallback scrollbars if text scales big */
+            text-align: left;
         }
 
-        /* Target CSS State on Hover activation */
+        /* Hover Launch Activations */
         .exp-card:hover .details-overlay {
             opacity: 1;
             pointer-events: auto;
         }
         .exp-card:hover .details-box {
             transform: scale(1);
+        }
+
+        .details-box h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 6px;
+            line-height: 1.2;
         }
 
         .details-box ul {
@@ -432,7 +442,6 @@
             position: relative;
             padding-left: 22px;
             line-height: 1.6;
-            text-align: left;
         }
         .details-box li::before {
             content: "•";
@@ -535,7 +544,7 @@
             .hero-image img {
                 width: 260px;
             }
-            /* Native standard layouts for mobile view touches */
+            /* Handles graceful fallback layout views for mobile screen dimensions */
             .exp-card {
                 height: auto;
             }
@@ -556,6 +565,7 @@
                 border: none;
                 box-shadow: none;
                 max-height: none;
+                aspect-ratio: auto;
             }
         }
     </style>
@@ -653,18 +663,17 @@
         </div>
     </section>
 
-    <!-- Work Experience Hover Box Popup Section -->
+    <!-- Work Experience Section -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
-            <p class="section-subtitle">Hover over any card to launch the comprehensive workflow parameters details box.</p>
+            <p class="section-subtitle">Hover over any card to reveal the full workflow details in a sharp, screen-centered square layout.</p>
             
             <div class="experience-grid">
                 
                 <!-- Job 1: Barkbus -->
                 <div class="exp-card">
                     <div class="company-logo-container">
-                        <!-- Update src with real image paths (e.g., logos/barkbus.png) when ready -->
                         <img src="logos/barkbus.png" alt="Barkbus" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                         <div class="logo-placeholder">🐾 Barkbus</div>
                     </div>
@@ -673,11 +682,11 @@
                     <div class="company-name">Barkbus</div>
                     <p class="brief-desc">Managed real-time customer channels, appointment calendars, and optimized routing paths for mobile specialists.</p>
                     
-                    <!-- Center Overlay Box Structure -->
+                    <!-- Viewport Centered Box Modal Content Box Overlay -->
                     <div class="details-overlay">
                         <div class="details-box">
                             <span class="timeline-date">June 2025 - Dec 2025</span>
-                            <h2 style="margin-top: 4px;">Virtual Assistant & Logistics</h2>
+                            <h2>Virtual Assistant & Logistics</h2>
                             <h4 style="color: var(--accent-glow); font-weight: 500; margin-bottom: 4px;">Barkbus</h4>
                             <ul>
                                 <li>Handled high-volume inbound customer enquiries, scheduling dog grooming appointments while optimizing groomer routes and availability.</li>
@@ -690,7 +699,6 @@
                 <!-- Job 2: Phone Animal -->
                 <div class="exp-card">
                     <div class="company-logo-container">
-                        <!-- Update src with real image paths (e.g., logos/phoneanimal.png) when ready -->
                         <img src="logos/phoneanimal.png" alt="Phone Animal" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                         <div class="logo-placeholder">🏠 Phone Animal</div>
                     </div>
@@ -699,11 +707,11 @@
                     <div class="company-name">Phone Animal</div>
                     <p class="brief-desc">Conducted specialized property targeting, targeted outbound outreach, and curated optimized asset prospects.</p>
                     
-                    <!-- Center Overlay Box Structure -->
+                    <!-- Viewport Centered Box Modal Content Box Overlay -->
                     <div class="details-overlay">
                         <div class="details-box">
                             <span class="timeline-date">Dec 2021 - June 2025</span>
-                            <h2 style="margin-top: 4px;">Lead Generation Specialist</h2>
+                            <h2>Lead Generation Specialist</h2>
                             <h4 style="color: var(--accent-glow); font-weight: 500; margin-bottom: 4px;">Phone Animal</h4>
                             <ul>
                                 <li>Conducted outbound cold calls to homeowners across targeted regions to identify potential sellers and generate qualified leads for a real estate agent.</li>
@@ -727,11 +735,11 @@
                     <div class="company-name">Telstra</div>
                     <p class="brief-desc">Led cross-functional client relations, targeted B2B accounts, network migration, and structured service analysis.</p>
                     
-                    <!-- Center Overlay Box Structure -->
+                    <!-- Viewport Centered Box Modal Content Box Overlay -->
                     <div class="details-overlay">
                         <div class="details-box">
                             <span class="timeline-date">Nov 2014 - Nov 2020</span>
-                            <h2 style="margin-top: 4px;">Sales & Support Specialist</h2>
+                            <h2>Sales & Support Specialist</h2>
                             <h4 style="color: var(--accent-glow); font-weight: 500; margin-bottom: 4px;">Telstra</h4>
                             <ul>
                                 <li><strong>Customer Service Representative:</strong> Provided multi-channel support, resolving inquiries and technical issues with a customer-first approach and consistently high satisfaction ratings.</li>
@@ -756,11 +764,11 @@
                     <div class="company-name">Xlibris Publishing</div>
                     <p class="brief-desc">Managed outbound structural consultation pipelines and account qualifications for independent global authors.</p>
                     
-                    <!-- Center Overlay Box Structure -->
+                    <!-- Viewport Centered Box Modal Content Box Overlay -->
                     <div class="details-overlay">
                         <div class="details-box">
                             <span class="timeline-date">Nov 2013 - Oct 2014</span>
-                            <h2 style="margin-top: 4px;">Publishing Consultant</h2>
+                            <h2>Publishing Consultant</h2>
                             <h4 style="color: var(--accent-glow); font-weight: 500; margin-bottom: 4px;">Xlibris Publishing</h4>
                             <ul>
                                 <li>Conducted high-volume outbound cold calls to prospective authors, initiating conversations about their writing goals and gauging their readiness to publish.</li>
@@ -774,7 +782,6 @@
                 <!-- Job 5: Wellpointwest -->
                 <div class="exp-card">
                     <div class="company-logo-container">
-                        <!-- Update src with real image paths (e.g., logos/wellpointwest.png) when ready -->
                         <img src="logos/wellpointwest.png" alt="Wellpoint West" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                         <div class="logo-placeholder">⚕️ Wellpoint West</div>
                     </div>
@@ -783,11 +790,11 @@
                     <div class="company-name">Wellpoint West</div>
                     <p class="brief-desc">Supervised medical benefits data compliance, claim audits, and real-time validation tracking under strict HIPAA regulations.</p>
                     
-                    <!-- Center Overlay Box Structure -->
+                    <!-- Viewport Centered Box Modal Content Box Overlay -->
                     <div class="details-overlay">
                         <div class="details-box">
                             <span class="timeline-date">Prior Experience</span>
-                            <h2 style="margin-top: 4px;">Claims & Benefits Specialist</h2>
+                            <h2>Claims & Benefits Specialist</h2>
                             <h4 style="color: var(--accent-glow); font-weight: 500; margin-bottom: 4px;">Wellpoint West</h4>
                             <ul>
                                 <li>Handled inbound calls from healthcare providers and members, providing clear and accurate information about benefits eligibility, coverage details, and plan guidelines.</li>
