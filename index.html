@@ -222,6 +222,7 @@ color: var(--accent-glow);
 transform: translateY(-2px);
 }
 
+/* Hero Image & Floating Badge Config */
 .hero-image {
 flex: 0.8;
 display: flex;
@@ -234,7 +235,7 @@ background: linear-gradient(180deg, rgba(56, 189, 248, 0.2) 0%, rgba(0,0,0,0) 10
 border-radius: 24px;
 padding: 1px;
 }
-.hero-image img {
+.hero-image img.profile-img {
 width: 340px;
 max-width: 100%;
 border-radius: 23px;
@@ -243,6 +244,21 @@ object-fit: cover;
 background: #111827;
 filter: drop-shadow(0 20px 40px rgba(56, 189, 248, 0.15));
 animation: float-effect 6s ease-in-out infinite;
+}
+
+.floating-experience-badge {
+position: absolute;
+bottom: -20px;
+left: -20px;
+width: 110px;
+height: auto;
+z-index: 100;
+cursor: pointer;
+transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+.floating-experience-badge:hover {
+transform: scale(1.15) rotate(-5deg);
 }
 
 @keyframes float-effect {
@@ -837,7 +853,9 @@ I am a highly proactive and organized Professional with <strong>over 15+ years o
 </div>
 <div class="hero-image">
 <div class="image-frame">
-<img src="profile.png" alt="Jan Ira Bantilan Portfolio">
+<img src="profile.png" alt="Jan Ira Bantilan Portfolio" class="profile-img">
+<!-- RESTORED FLOATING EXPERIENCE BADGE -->
+<a href="#experience"><img src="image_efdf1f.png" alt="Over 15 Years Experience" class="floating-experience-badge"></a>
 </div>
 </div>
 </div>
@@ -1030,12 +1048,11 @@ I am a highly proactive and organized Professional with <strong>over 15+ years o
 </div>
 </section>
 
-<!-- RESTORED & EXPANDED SKILLS AND TRAITS GRID -->
+<!-- SKILLS AND TRAITS GRID -->
 <section id="skills">
 <div class="container">
 <h2 class="section-title">Skills, Strengths & Traits</h2>
 <p class="section-subtitle">Core execution parameters cultivated through 15+ years of high-level administrative and sales experience.</p>
-
 
 <h3 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--accent-glow); font-weight: 600;">Core Expertise & Strengths</h3>
 <div class="grid" style="margin-bottom: 48px;">
